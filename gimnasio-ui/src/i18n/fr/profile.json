@@ -1,0 +1,29 @@
+{
+  "gimnasio-uiApp": {
+    "profile": {
+      "home": {
+        "title": "Profiles",
+        "refreshListLabel": "Rafraîchir la liste",
+        "createLabel": "Créer un nouveau Profile",
+        "createOrEditLabel": "Créer ou modifier un Profile",
+        "notFound": "Aucun Profile trouvé"
+      },
+      "created": "Un nouveau Profile est créé avec identifiant {{ param }}",
+      "updated": "Un Profile est mis à jour avec l'identifiant {{ param }}",
+      "deleted": "Un Profile est supprimé avec identifiant {{ param }}",
+      "delete": {
+        "question": "Êtes-vous sûr de vouloir supprimer Profile {{ id }}?"
+      },
+      "detail": {
+        "title": "Profile"
+      },
+      "id": "ID",
+      "username": "Nom d'utilisateur",
+      "name": "Nom",
+      "lastNom": "Nom de famille",
+      "email": "Email",
+      "phoneNumber": "Numéro de téléphone",
+      "badgeId": "Badge Id"
+    }
+  }
+}

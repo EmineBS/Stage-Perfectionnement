@@ -1,0 +1,18 @@
+---
+- name: Install and configure GitHub Actions self-hosted runner
+  hosts: localhost
+  become: true
+
+  vars_files:
+    - vars.yml
+
+  tasks:
+    # Install dependencies
+    - name: Prepare environment
+      include_tasks: tasks/prepare_env.yml
+
+    - name: Install Runner
+      include_tasks: tasks/install_runner.yml
+
+    - name: install Docker
+      include_tasks: tasks/install_docker.yml  

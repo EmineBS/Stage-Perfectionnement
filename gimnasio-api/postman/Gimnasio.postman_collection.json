@@ -1,0 +1,1329 @@
+{
+	"info": {
+		"_postman_id": "bd3b875f-d8f4-4801-a433-b57c2c3d0e93",
+		"name": "Gimnasio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "pack",
+			"item": [
+				{
+					"name": "get all packs by badge",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"enabled\":true,\n  \"status\": \"ACTIVE\",\n  \"pack\": {\n    \"id\": 1414\n  },\n  \"badge\":{\n    \"id\": 1\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/packs/badge/2323",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"packs",
+								"badge",
+								"2323"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create new pack",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"sfitness pack summer\",\n  \"description\": \"sfitness pack desc\",\n  \"workoutSessions\": 5,\n  \"price\": 1000.5,\n  \"autoConfirm\": false,\n  \"gym\": {\n    \"id\": 3\n  },\n  \"rdvEnabled\":true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/packs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"packs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all packs by gym",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"enabled\":true,\n  \"status\": \"ACTIVE\",\n  \"pack\": {\n    \"id\": 1414\n  },\n  \"badge\":{\n    \"id\": 1\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/packs/gym/1111",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"packs",
+								"gym",
+								"1111"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "feature",
+			"item": [
+				{
+					"name": "create new feature",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"checkin\",\n  \"description\": \"checkin desc\",\n  \"enabled\": true,\n  \"price\": 1000.5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/admin/features",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"admin",
+								"features"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "calendar",
+			"item": [
+				{
+					"name": "create new calendar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"startHour\": \"08:00\",\n  \"endHour\": \"17:00\",\n  \"unit\": 35,\n  \"offDays\": [\n    1\n  ],\n  \"enabled\": true,\n  \"gymId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/calendars",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"calendars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get calender of current badge account",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"startHour\": \"08:00\",\n  \"endHour\": \"17:00\",\n  \"unit\": 35,\n  \"offDays\": [\n    1\n  ],\n  \"enabled\": true,\n  \"gymId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/calendars/badge",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"calendars",
+								"badge"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get calender by gym",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"enabled\":true,\n  \"gymId\": 5555\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/calendars/gym/1111",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"calendars",
+								"gym",
+								"1111"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "rdv",
+			"item": [
+				{
+					"name": "create new rdv",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fromDate\": \"2023-06-26T11:30:17.779521Z\",\n    \"toDate\": \"2023-06-26T13:30:17.779521Z\",\n    \"enabled\": true,\n   \"calendarId\": 1,\n   \"badgeId\": 20\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/rdvs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"rdvs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get rdvs by badge",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fromDate\": \"2023-06-20T02:30:17.779521Z\",\n    \"toDate\": \"2023-06-20T04:30:17.779521Z\",\n    \"enabled\": true,\n    \"status\": \"waiting\",\n   \"calendarId\": 1,\n  \"badgeId\": 2323\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/rdvs/badge/2323",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"rdvs",
+								"badge",
+								"2323"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get rdvs by badge session",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fromDate\": \"2023-06-20T02:30:17.779521Z\",\n    \"toDate\": \"2023-06-20T04:30:17.779521Z\",\n    \"enabled\": true,\n    \"status\": \"waiting\",\n   \"calendarId\": 1,\n  \"badgeId\": 2323\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/rdvs/badge-account",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"rdvs",
+								"badge-account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get rdvs by calendar session",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fromDate\": \"2023-06-20T02:30:17.779521Z\",\n    \"toDate\": \"2023-06-20T04:30:17.779521Z\",\n    \"enabled\": true,\n    \"status\": \"waiting\",\n   \"calendarId\": 1,\n  \"badgeId\": 2323\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/rdvs/badge-calendar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"rdvs",
+								"badge-calendar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get rdvs by gym",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fromDate\": \"2023-06-20T02:30:17.779521Z\",\n    \"toDate\": \"2023-06-20T04:30:17.779521Z\",\n    \"enabled\": true,\n    \"status\": \"waiting\",\n   \"calendarId\": 1,\n  \"badgeId\": 2323\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/rdvs/gym/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"rdvs",
+								"gym",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "rel badge pack",
+			"item": [
+				{
+					"name": "get full badges with pack name",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"enabled\":true,\n  \"status\": \"FINISHED\",\n  \"pack\": {\n    \"id\": 1313\n  },\n  \"badge\":{\n    \"id\": 2323\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/badges-full/gym/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"badges-full",
+								"gym",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add rel badges pack",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"enabled\":true,\n  \"status\": \"ACTIVE\",\n  \"pack\": {\n    \"id\": 1414\n  },\n  \"badge\":{\n    \"id\": 21\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/rel_badge_pack",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"rel_badge_pack"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get packs rel by gym",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"enabled\":true,\n  \"status\": \"ACTIVE\",\n  \"pack\": {\n    \"id\": 1414\n  },\n  \"badge\":{\n    \"id\": 1\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/rel_badge_pack/gym/1111",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"rel_badge_pack",
+								"gym",
+								"1111"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get packs rel by badge",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"enabled\":true,\n  \"status\": \"ACTIVE\",\n  \"pack\": {\n    \"id\": 1414\n  },\n  \"badge\":{\n    \"id\": 1\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/rel_badge_pack/badge-rel/20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"rel_badge_pack",
+								"badge-rel",
+								"20"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "rel user gym",
+			"item": [
+				{
+					"name": "assign gym to user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"user\",\n    \"gymId\": 1111\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/rel_user_gym",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"rel_user_gym"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get users of gym",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": {\n      \"id\":\"user\"\n  },\n  \"gym\":{\n    \"id\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/rel_user_gym/users/1111",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"rel_user_gym",
+								"users",
+								"1111"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "rel gym feature",
+			"item": [
+				{
+					"name": "assign gym to user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"gymId\": 1111,\n    \"featureId\": 333\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/admin/rel_gym_features",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"admin",
+								"rel_gym_features"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get rel where feature is badge_designation by gym",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"gymId\": 1111,\n    \"featureId\": 222\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/rel_gym_features/gym-feature/1111",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"rel_gym_features",
+								"gym-feature",
+								"1111"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get users of gym",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": {\n      \"id\":\"user\"\n  },\n  \"gym\":{\n    \"id\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/rel_user_gym/users/1111",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"rel_user_gym",
+								"users",
+								"1111"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "badge",
+			"item": [
+				{
+					"name": "badge update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"ACTIVATED\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/badges",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"badges"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "badges by gym",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"ACTIVATED\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/badges/gym/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"badges",
+								"gym",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "gym",
+			"item": [
+				{
+					"name": "gyms by user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"befit\",\n    \"description\": \"\",\n    \"badgeAmount\": 6,\n    \"location\": \"tunis\",\n    \"phoneNumber\": \"20202020\",\n    \"email\": \"befit@gmail.com\",\n    \"registrationNumber\": \"12121212121\",\n    \"user\":{\"id\":\"4c973896-5761-41fc-8217-07c5d13a004b\"}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/gyms",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"gyms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gym by current badge account",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"befit\",\n    \"description\": \"\",\n    \"badgeAmount\": 6,\n    \"location\": \"tunis\",\n    \"phoneNumber\": \"20202020\",\n    \"email\": \"befit@gmail.com\",\n    \"registrationNumber\": \"12121212121\",\n    \"user\":{\"id\":\"4c973896-5761-41fc-8217-07c5d13a004b\"}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/gyms/badge-account",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"gyms",
+								"badge-account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create gym",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"texasGym01\",\n    \"description\": \"texasGymm01 desc\",\n    \"badgeAmount\": 5,\n    \"location\": \"texas\",\n    \"phoneNumber\": \"12346541\",\n    \"email\": \"texasGym01@gmail.com\",\n    \"registrationNumber\": \"84687654687\",\n    \"badgeDesignation\": true,\n    \"calendar\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/admin/gyms",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"admin",
+								"gyms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update gym",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":1111,\n    \"name\": \"cali-fit02\",\n    \"description\": \"aaaaaa\",\n    \"badgeAmount\": 6,\n    \"location\": \"tunis\",\n    \"phoneNumber\": \"20202020\",\n    \"email\": \"befit@gmail.com\",\n    \"registrationNumber\": \"12121212121\",\n    \"user\":{\"id\":\"4c973896-5761-41fc-8217-07c5d13a004b\"}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/gyms/1111",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"gyms",
+								"1111"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "profile",
+			"item": [
+				{
+					"name": "create profil",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"brahim02\",\n    \"username\": \"brahim02\",\n    \"lastName\": \"souidene02\",\n    \"email\": \"brahim02@gmail.com\",\n    \"phoneNumber\": \"20202020\",\n    \"badgeId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/profiles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"profiles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "current profil",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"brahim02\",\n    \"username\": \"brahim02\",\n    \"lastName\": \"souidene02\",\n    \"email\": \"brahim02@gmail.com\",\n    \"phoneNumber\": \"20202020\",\n    \"badgeId\": 2323\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/profiles/account",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"profiles",
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update gym",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":1111,\n    \"name\": \"cali-fit02\",\n    \"description\": \"aaaaaa\",\n    \"badgeAmount\": 6,\n    \"location\": \"tunis\",\n    \"phoneNumber\": \"20202020\",\n    \"email\": \"befit@gmail.com\",\n    \"registrationNumber\": \"12121212121\",\n    \"user\":{\"id\":\"4c973896-5761-41fc-8217-07c5d13a004b\"}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/gyms/1111",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"gyms",
+								"1111"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "keyclaok",
+			"item": [
+				{
+					"name": "get users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"name\": \"brahiml\",\n    \"description\": \"\",\n    \"badgeAmount\": 8,\n    \"location\": \"tunis\",\n    \"phoneNumber\": \"20202020\",\n    \"email\": \"zxx-sports@gmail.com\",\n    \"registrationNumber\": \"12121212121\",\n    \"status\": null,\n    \"user\": {\"id\":\"4c973896-5761-41fc-8217-07c5d13a004b\"}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/admin/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"login\":\"alphauser\",\n    \"password\":\"alphauser\",\n    \"email\":\"alphauser@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/admin/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "checkin",
+			"item": [
+				{
+					"name": "checkin",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/checkin/ae5a75fa-1276-42ab-8e8a-70977aba7ee7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"checkin",
+								"ae5a75fa-1276-42ab-8e8a-70977aba7ee7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "patch checkin",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":52,\n  \"status\": \"CONFIRMED\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5050/api/checkins/52",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"checkins",
+								"52"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get checkin by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5050/api/checkins/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"checkins",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get checkins by badge",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5050/api/checkins/badge/badge-2323",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"checkins",
+								"badge",
+								"badge-2323"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get checkins by gym",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5050/api/checkins/gym/1111",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5050",
+							"path": [
+								"api",
+								"checkins",
+								"gym",
+								"1111"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "health",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"brahim\",\n    \"password\": \"44444\",\n    \"email\": \"brahim@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5050/health/echo/hello",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5050",
+					"path": [
+						"health",
+						"echo",
+						"hello"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "username",
+				"value": "sfitbadge02@gmail.com",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "0000",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "http://keycloak:9080/realms/jhipster/protocol/openid-connect/token",
+				"type": "string"
+			},
+			{
+				"key": "tokenName",
+				"value": "admin",
+				"type": "string"
+			},
+			{
+				"key": "scope",
+				"value": "openid profile email offline_access",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "password_credentials",
+				"type": "string"
+			},
+			{
+				"key": "authUrl",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "web_app",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "web_app",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

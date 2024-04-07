@@ -1,0 +1,47 @@
+<div class="user-box position-relative ml-2" ngbDropdown>
+  <a ngbDropdownToggle class="p-0 d-flex align-items-center">
+    <div class="d-block p-0 avatar-icon-wrapper">
+      <div class="avatar-icon rounded">
+        <fa-icon class="font-size-xl" [icon]="['fas', 'id-badge']" ngbTooltip="Gyms"></fa-icon>
+      </div>
+    </div>
+    <div class="d-none d-xl-block pl-2">
+      <div class="font-weight-bold">Games</div>
+      <span class="text-black-50">
+        <div class="font-weight-bold">
+          {{ gymName }}
+        </div>
+      </span>
+    </div>
+    <span class="pl-1 pl-xl-3"><fa-icon [icon]="['fas', 'angle-down']" class="opacity-5"></fa-icon></span>
+  </a>
+  <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right dropdown-menu-lg p-0">
+    <ul class="list-group list-group-flush text-left bg-transparent">
+      <li class="list-group-item rounded-top">
+        <ul class="nav nav-neutral-primary nav-pills flex-column">
+          <li class="d-flex text-primary pt-1 pb-2 font-weight-bold align-items-center">
+            <div>
+              {{ gymName }}
+            </div>
+          </li>
+          <li *ngFor="let game of games" class="nav-item" ngbTooltip="Account settings">
+            <a *ngIf="gymName != game.gameName" (click)="makeGymActive(game)" class="nav-link" [routerLink]="">
+              {{ game.gameName }}
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="list-group-item bg-transparent p-0">
+        <div class="grid-menu grid-menu-2col">
+          <div class="py-3">
+            <div class="d-flex justify-content-center">
+              <div class="d-flex align-items-center">
+                <div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

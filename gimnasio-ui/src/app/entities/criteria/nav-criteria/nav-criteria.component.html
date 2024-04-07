@@ -1,0 +1,17 @@
+<div class="card card-box mb-3 nav-content">
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs mb-5" type="tabs">
+    <li [ngbNavItem]="1" [destroyOnHide]="true">
+      <div class="card-header">
+        <div class="card-header--title">
+          <a ngbNavLink>Criteria details</a>
+        </div>
+      </div>
+
+      <ng-template ngbNavContent>
+        <jhi-criteria-detail></jhi-criteria-detail>
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>

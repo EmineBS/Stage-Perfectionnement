@@ -1,0 +1,141 @@
+<div>
+  <h2 id="page-heading">
+    <span jhiTranslate="gimnasio-uiApp.profile.home.title">Profiles</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gimnasio-uiApp.profile.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-profile"
+        [routerLink]="['/profile/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gimnasio-uiApp.profile.home.createLabel"> Create a new Profile </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="profiles?.length === 0">
+    <span jhiTranslate="gimnasio-uiApp.profile.home.notFound">No Profiles found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="profiles && profiles.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="username">
+            <div class="d-flex">
+              <span jhiTranslate="gimnasio-uiApp.profile.username">Username</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="name">
+            <div class="d-flex">
+              <span jhiTranslate="gimnasio-uiApp.profile.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastName">
+            <div class="d-flex">
+              <span jhiTranslate="gimnasio-uiApp.profile.lastName">Last Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="email">
+            <div class="d-flex">
+              <span jhiTranslate="gimnasio-uiApp.profile.email">Email</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="phoneNumber">
+            <div class="d-flex">
+              <span jhiTranslate="gimnasio-uiApp.profile.phoneNumber">Phone Number</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="badgeId">
+            <div class="d-flex">
+              <span jhiTranslate="gimnasio-uiApp.profile.badgeId">Badge Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let profile of profiles; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/profile', profile.id, 'view']">{{ profile.id }}</a>
+          </td>
+          <td>{{ profile.username }}</td>
+          <td>{{ profile.name }}</td>
+          <td>{{ profile.lastName }}</td>
+          <td>{{ profile.email }}</td>
+          <td>{{ profile.phoneNumber }}</td>
+          <td>{{ profile.badgeId }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/profile', profile.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/profile', profile.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(profile)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="profiles && profiles.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

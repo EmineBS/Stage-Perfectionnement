@@ -1,0 +1,71 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="showUser" *ngIf="VisitDay" jhiTranslate="gimnasio-uiApp.visit.rdvDate">Visit At {{ VisitDay | date: 'short' }}</h4>
+
+  <button aria-label="Close" data-dismiss="modal" class="btn-close" type="button" (click)="dismiss()">
+    <span aria-hidden="true"></span>
+  </button>
+</div>
+
+<div class="modal-body pad">
+  <div *ngIf="DateVisit">
+    <h5>Visit informations</h5>
+
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th jhiTranslate="gimnasio-uiApp.visit.title">Title</th>
+            <th jhiTranslate="gimnasio-uiApp.visit.startsAt">Starts at</th>
+            <th jhiTranslate="gimnasio-uiApp.visit.endsAt">Ends at</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              <select
+                class="form-control"
+                id="field_badge"
+                data-cy="badge"
+                name="badge"
+                formControlName="badge"
+                [compareWith]="compareBadge"
+              >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="badgeOption" *ngFor="let badgeOption of badgesSharedCollection">{{ badgeOption.id }}</option>
+              </select>
+            </td>
+            <td>
+              <input
+                class="form-control"
+                type="text"
+                mwlFlatpickr
+                dateFormat="Y-m-dTH:i"
+                altFormat="F j, Y H:i"
+                placeholder="Not set"
+                value="{{ DateVisit }}"
+                disabled
+              />
+            </td>
+            <td>
+              <input
+                class="form-control"
+                type="text"
+                mwlFlatpickr
+                dateFormat="Y-m-dTH:i"
+                altFormat="F j, Y H:i"
+                placeholder="Not set"
+                value="{{ DateEnds }}"
+                disabled
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button data-dismiss="modal" class="btn btn-primary float-start" type="button" (click)="AddVisit()" jhiTranslate="gimnasio-uiApp.visit.saveRDV">Add Visit</button>
+</div>

@@ -1,0 +1,39 @@
+---
+# Install dependencies
+    - name: Install required packages
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - git
+        - wget
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - gnupg
+        - lsb-release
+        - unzip
+
+# Ensure target directory exists
+    - name: Create directory for runner
+      file:
+        path: "{{ runner_folder }}"
+        state: directory
+        mode: 0755
+        owner: "{{ runner_user }}"
+
+    # Download and configure runner
+    - name: Download GitHub Actions runner
+      get_url:
+        url: "https://github.com/actions/runner/releases/download/v{{ runner_version }}/actions-runner-linux-x64-{{ runner_version }}.tar.gz"
+        dest: /tmp/actions-runner-linux-x64.tar.gz
+
+     #Extract Github Actions runner
+    - name: Extract GitHub Actions runner
+      unarchive:
+        src: /tmp/actions-runner-linux-x64.tar.gz
+        owner: "{{ runner_user }}"
+        group: "{{ runner_user }}"
+        remote_src: yes
+        mode: 0755
+        dest: "{{ runner_folder }}"

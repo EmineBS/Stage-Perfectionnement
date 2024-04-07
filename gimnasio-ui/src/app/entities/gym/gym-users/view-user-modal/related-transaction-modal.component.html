@@ -1,0 +1,52 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="showTransactionHash" *ngIf="transaction">Related Transaction</h4>
+
+  <button aria-label="Close" data-dismiss="modal" class="btn-close" type="button" (click)="dismiss()">
+    <span aria-hidden="true"></span>
+  </button>
+</div>
+
+<div class="modal-body pad">
+  <div *ngIf="transaction">
+    <h5 jhiTranslate="health.details.properties">Details</h5>
+
+    <div class="table-responsive">
+      <table class="table table-striped" aria-describedby="showTransactionHash">
+        <thead>
+          <tr>
+            <th scope="col" class="text-start" jhiTranslate="health.details.name">Name</th>
+            <th scope="col" class="text-start" jhiTranslate="health.details.value">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-start" jhiTranslate="falcone-uiApp.transaction.value">Hash</td>
+            <td class="text-start">{{ transaction.hash }}</td>
+          </tr>
+          <tr>
+            <td class="text-start" jhiTranslate="falcone-uiApp.transaction.date">Date</td>
+            <td class="text-start" *ngIf="transaction.dateBlock">{{ transaction.dateBlock * 1000 | date: 'medium' }}</td>
+          </tr>
+          <tr>
+            <td class="text-start" jhiTranslate="falcone-uiApp.transaction.totalUSD">Total Amount en USD</td>
+            <td class="text-start">${{ transaction.flowUSD | number: '1.2-2' }}</td>
+          </tr>
+          <tr>
+            <td class="text-start" jhiTranslate="falcone-uiApp.transaction.totalBTC">Total Amount en BTC</td>
+            <td class="text-start">{{ transaction.flowBTC }}BTC</td>
+          </tr>
+          <tr>
+            <td class="text-start" jhiTranslate="falcone-uiApp.transaction.status">Status</td>
+            <td class="text-start">
+              <span class="badge" [ngClass]="getBadgeClass(transaction.status!)">{{ transaction.status }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button data-dismiss="modal" class="btn btn-secondary float-start" type="button" (click)="dismiss()">Done</button>
+</div>

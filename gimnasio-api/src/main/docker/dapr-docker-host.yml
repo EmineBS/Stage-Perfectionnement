@@ -1,0 +1,70 @@
+# This configuration is intended for development purpose, it's **your** responsibility to harden it for production
+version: '3'
+services:
+  gimnasio-api-postgresql:
+    image: postgres:14.5
+    hostname: gimnasio-api-postgresql
+    environment:
+      - POSTGRES_USER=gimnasio-api
+      - POSTGRES_PASSWORD=
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 5432:5432
+    network_mode: "host"
+
+  consul:
+    image: consul:1.13.1
+    hostname: consul
+    ports:
+      - 8300:8300
+      - 8500:8500
+      - 8600:8600
+    command: consul agent -dev -ui -client 0.0.0.0 -log-level=INFO
+    network_mode: "host"
+
+  consul-config-loader:
+    image: jhipster/consul-config-loader:v0.4.1
+    hostname: consul-config-loader
+    volumes:
+      - ./central-server-config:/config
+    environment:
+      - INIT_SLEEP_SECONDS=5
+      - CONSUL_URL=consul
+      - CONSUL_PORT=8500
+    network_mode: "host"
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:19.0.1
+    hostname: keycloak
+    command: ['start-dev --import-realm']
+    volumes:
+      - ./realm-config:/opt/keycloak/data/import
+    environment:
+      - KC_DB=dev-file
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_FEATURES=scripts
+      - KC_HTTP_PORT=9080
+      - KC_HTTPS_PORT=9443
+    network_mode: "host"
+
+  gimnasio-api-dapr:
+    image: "daprio/daprd:edge-mariner-linux-amd64"
+    command: [ "./daprd",
+    "-app-id", "gimnasio-api",
+    "-app-protocol", "http",
+    "-app-port", "5050",
+    "-dapr-http-port", "35050",
+    "-dapr-grpc-port", "55050",
+    "-metrics-port", "65050",
+    "-profile-port", "65051",
+    "-dapr-internal-grpc-port", "65052",
+#    "-enable-metrics", "false",
+    "-resources-path", "/dapr"
+    ]
+    volumes:
+      - "./dapr/:/dapr"
+    restart: always
+    network_mode: "host"
+    ports:
+      - 35050:35050

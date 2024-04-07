@@ -1,0 +1,32 @@
+{
+  "gimnasio-uiApp": {
+    "checkin": {
+      "home": {
+        "title": "Checkin",
+        "refreshListLabel": "Rafraîchir la liste",
+        "createLabel": "Créer un nouveau checkin",
+        "createOrEditLabel": "Créer ou modifier une checkin",
+        "notFound": "Pas de checkin" 
+      },
+      "created": "Un nouveau Checkin est créé avec identifiant {{ param }}",
+      "updated": "Un checkin est mis à jour avec l'identifiant {{ param }}",
+      "deleted": "Un checkin est supprimé avec identifiant {{ param }}",
+      "delete": {
+        "question": "Êtes-vous sûr de vouloir supprimer le checkin {{ id }}?"
+      },
+      "detail": {
+        "title": "Checkin"
+      },
+      "id": "ID",
+      "status": "Status",
+      "user": "Vérifié par",
+      "badge": "Badge",
+      "badgeId": "Badge ID",
+      "lastModifiedDate": "Date de la dernière modification",
+      "lastModifiedBy": "Dernière modification par",
+      "createdDate": "Date de création",
+      "createdBy": "Créé par",
+      "pack": "Active Pack"
+    }
+  }
+}

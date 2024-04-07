@@ -1,0 +1,28 @@
+{
+  "gimnasio-uiApp": {
+    "feature": {
+      "home": {
+        "title": "Fonctionnalité",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Fonctionnalité",
+        "createOrEditLabel": "Create or edit a Fonctionnalité",
+        "notFound": "No Fonctionnalités found"
+      },
+      "created": "A new Fonctionnalité is created with identifier {{ param }}",
+      "updated": "A Fonctionnalité is updated with identifier {{ param }}",
+      "deleted": "A Fonctionnalité is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Fonctionnalité {{ id }}?"
+      },
+      "detail": {
+        "title": "Fonctionnalité"
+      },
+      "id": "ID",
+      "name": "Nom",
+      "description": "Description",
+      "enabled": "Activé",
+      "price": "Prix",
+      "addFeature": "Ajouter une Fonctionnalité"
+    }
+  }
+}

@@ -1,0 +1,137 @@
+<div class="col-12">
+  <div class="card-header pr-2">
+    <div class="col-12" *ngIf="packs?.length === 0">
+      <div class="alert alert-warning" id="no-result">
+        <span jhiTranslate="gimnasio-uiApp.pack.home.notFound">No packs found</span>
+      </div>
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+    </div>
+    <div class="col-3"></div>
+    <div class="card-header--title col-12" *ngIf="packs?.length !== 0">
+      <!-- bar -->
+      <div class="col-6">
+        <div class="search-wrapper mb-4">
+          <div class="input-group row">
+            <input
+              type="text"
+              [ngbTypeahead]="search"
+              placeholder="Pack name"
+              [(ngModel)]="filter"
+              (ngModelChange)="filterAndSort()"
+              class="form-control"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- bar -->
+    </div>
+  </div>
+
+  <div class="card-body p-0">
+    <div class="table-responsive" style="min-height: 40vh" *ngIf="packs && packs.length > 0" id="entities">
+      <table class="table table-bordered table-striped mb-0 table-hover mb-0">
+        <thead class="thead-light">
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="filterAndSort()">
+            <th scope="col" jhiSortBy="name">
+              <div class="text-center">
+                <span jhiTranslate="gimnasio-uiApp.pack.name">Name</span>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="workoutSessions">
+              <div class="text-center">
+                <span jhiTranslate="gimnasio-uiApp.pack.gym">Gym</span>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="status">
+              <div class="text-center">
+                <span jhiTranslate="gimnasio-uiApp.pack.status">Status</span>
+              </div>
+            </th>
+            <th class="text-center"><span jhiTranslate="entity.action.title"></span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pack of Filtredpacks; index as i; trackBy: trackId" data-cy="entityTable">
+            <td class="text-center">{{ pack.pack?.name }}</td>
+            <td class="text-center">
+              {{ badge.gymName }}
+            </td>
+            <td class="text-center">
+              <span class="badge" [ngClass]="getpackClass(pack.status!)"> {{ pack.status }}</span>
+            </td>
+
+            <td class="text-center">
+              <div class="btn-group btn-group-sm" dropdown placement="bottom right" container="body">
+                <button class="btn btn-sm px-2 py-0 dropdown-toggle no-caret btn-neutral-first" dropdownToggle type="button">
+                  <fa-icon class="font-size-lg" [icon]="['fas', 'ellipsis']" ngbTooltip="Actions"></fa-icon>
+                </button>
+                <div *dropdownMenu class="dropdown-menu dropdown-menu-xl p-0 dropdown-menu-right">
+                  <ul class="nav nav-neutral-first nav-pills flex-column pt-2 pb-3">
+                    <li class="nav-item nav-item--header px-3">
+                      <span class="text-capitalize text-black font-size-md font-weight-bold">
+                        <span jhiTranslate="entity.action.title"></span>
+                      </span>
+                    </li>
+                    <li class="dropdown-divider"></li>
+                    <li class="nav-item px-3">
+                      <a [routerLink]="['/admin/pack', pack.pack?.id, 'view']" class="nav-link active">
+                        <span jhiTranslate="entity.action.view"></span>
+                        <div class="ml-auto pack pack-first">New</div>
+                      </a>
+                    </li>
+                    <li class="dropdown-divider"></li>
+                    <li *jhiHasAnyAuthority="'ROLE_USER'" class="nav-item">
+                      <a (click)="delete(pack)" class="nav-link text-danger mx-3">
+                        <div class="nav-link-icon">
+                          <fa-icon [icon]="['fas', 'times']"></fa-icon>
+                        </div>
+                        <span jhiTranslate="entity.action.delete"></span>
+                      </a>
+                    </li>
+                    <li (click)="cancelPack(pack)" *jhiHasAnyAuthority="'ROLE_USER'" class="nav-item">
+                      <a *ngIf="pack.status === 'ACTIVE'" class="nav-link text-warning mx-3">
+                        <div class="nav-link-icon">
+                          <fa-icon [icon]="['fas', 'times']"></fa-icon>
+                        </div>
+                        <span jhiTranslate="entity.action.deactivate"></span>
+                      </a>
+                    </li>
+
+                    <li *jhiHasAnyAuthority="'ROLE_USER'" class="nav-item">
+                      <a *ngIf="pack.status === 'INACTIVE'" class="nav-link text-success mx-3">
+                        <div class="nav-link-icon">
+                          <fa-icon [icon]="['fas', 'times']"></fa-icon>
+                        </div>
+                        <span jhiTranslate="entity.action.activate"></span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="divider"></div>
+    <div *ngIf="packs && packs.length > 0" class="p-4">
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center mb-3">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  </div>
+</div>

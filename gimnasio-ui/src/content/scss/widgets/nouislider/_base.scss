@@ -1,0 +1,326 @@
+//  Core
+
+.ngx-slider,
+.ngx-slider * {
+  touch-action: none;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.ngx-slider-target {
+  position: relative;
+  direction: ltr;
+}
+
+.ngx-slider-base,
+.ngx-slider-connects {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Wrapper for all connect elements.
+ */
+.ngx-slider-connects {
+  overflow: hidden;
+  z-index: 0;
+}
+
+.ngx-slider-connect,
+.ngx-slider-origin {
+  will-change: transform;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+}
+
+.ngx-slider-connect {
+  height: 100%;
+  width: 100%;
+}
+
+.ngx-slider-origin {
+  height: 10%;
+  width: 10%;
+}
+
+/* Offset direction
+ */
+html:not([dir='rtl']) .ngx-slider-horizontal .ngx-slider {
+  left: auto;
+  right: 0;
+}
+
+/* Give origins 0 height/width so they don't interfere with clicking the
+ * connect elements.
+ */
+.ngx-slider-vertical {
+  min-height: 200px;
+
+  .ngx-slider-origin {
+    width: 0;
+  }
+}
+
+.ngx-slider-horizontal .ngx-slider-origin {
+  height: 0;
+}
+
+.ngx-slider-handle {
+  position: absolute;
+  outline: none !important;
+}
+
+.ngx-slider-touch-area {
+  height: 100%;
+  width: 100%;
+}
+
+.ngx-slider-state-tap .ngx-slider-connect,
+.ngx-slider-state-tap .ngx-slider-origin {
+  transition: transform 0.3s;
+}
+
+.ngx-slider-state-drag * {
+  cursor: inherit !important;
+}
+
+/* Slider size and handle placement;
+ */
+.ngx-slider-horizontal {
+  height: 4px;
+}
+
+.ngx-slider-horizontal .ngx-slider-handle {
+  width: 16px;
+  height: 16px;
+  left: -6px;
+  top: -6px;
+  @include border-radius(100%);
+  outline: none !important;
+}
+
+.ngx-slider-vertical {
+  width: 4px;
+}
+
+.ngx-slider-vertical .ngx-slider-handle {
+  width: 16px;
+  height: 16px;
+  left: -6px;
+  top: -6px;
+}
+
+html:not([dir='rtl']) .ngx-slider-horizontal .ngx-slider-handle {
+  right: -6px;
+  left: auto;
+}
+
+/* Styling;
+ * Giving the connect element a border radius causes issues with using transform: scale
+ */
+.ngx-slider-target {
+  background-color: $gray-200;
+  @include border-radius($border-radius);
+}
+
+.ngx-slider-connects {
+  @include border-radius($border-radius);
+}
+
+.ngx-slider-connect {
+  background: $primary;
+}
+
+/* Handles and cursors;
+ */
+.ngx-slider-draggable {
+  cursor: ew-resize;
+}
+
+.ngx-slider-vertical .ngx-slider-draggable {
+  cursor: ns-resize;
+}
+
+.ngx-slider-handle {
+  border: 2px solid $primary;
+  @include border-radius(100%);
+  background: $white;
+  cursor: default;
+  transition: box-shadow 200ms;
+}
+
+.ngx-slider-active {
+  border-color: darken($primary, 15%);
+  box-shadow: 0 0.46875rem 2.1875rem rgba($primary, 0.8), 0 0.125rem 0.5875rem rgba($primary, 0.9);
+}
+
+/* Handle stripes;
+ */
+.ngx-slider-handle:before,
+.ngx-slider-handle:after {
+  display: none;
+}
+
+/* Disabled state;
+ */
+[disabled] .ngx-slider-connect {
+  background: $gray-200;
+}
+
+[disabled].ngx-slider-target,
+[disabled].ngx-slider-handle,
+[disabled] .ngx-slider-handle {
+  cursor: not-allowed;
+}
+
+/* Base;
+ *
+ */
+.ngx-slider-pips,
+.ngx-slider-pips * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.ngx-slider-pips {
+  position: absolute;
+  color: $gray-300;
+}
+
+/* Values;
+ *
+ */
+.ngx-slider-value {
+  position: absolute;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.ngx-slider-value-sub {
+  color: $gray-600;
+  font-size: 10px;
+}
+
+/* Markings;
+ *
+ */
+.ngx-slider-marker {
+  position: absolute;
+  background: $gray-400;
+}
+
+.ngx-slider-marker-sub {
+  background: $gray-300;
+}
+
+.ngx-slider-marker-large {
+  background: $gray-300;
+}
+
+/* Horizontal layout;
+ *
+ */
+.ngx-slider-pips-horizontal {
+  padding: 10px 0;
+  height: 80px;
+  top: 100%;
+  left: 0;
+  width: 100%;
+}
+
+.ngx-slider-value-horizontal {
+  transform: translate(-50%, 50%);
+}
+
+.ngx-slider-rtl .ngx-slider-value-horizontal {
+  transform: translate(50%, 50%);
+}
+
+.ngx-slider-marker-horizontal.ngx-slider-marker {
+  margin-left: -1px;
+  width: 2px;
+  height: 5px;
+}
+
+.ngx-slider-marker-horizontal.ngx-slider-marker-sub {
+  height: 10px;
+}
+
+.ngx-slider-marker-horizontal.ngx-slider-marker-large {
+  height: 15px;
+}
+
+/* Vertical layout;
+ *
+ */
+.ngx-slider-pips-vertical {
+  padding: 0 10px;
+  height: 100%;
+  top: 0;
+  left: 100%;
+}
+
+.ngx-slider-value-vertical {
+  transform: translate(0, -50%, 0);
+  padding-left: 25px;
+}
+
+.ngx-slider-rtl .ngx-slider-value-vertical {
+  transform: translate(0, 50%);
+}
+
+.ngx-slider-marker-vertical.ngx-slider-marker {
+  width: 5px;
+  height: 2px;
+  margin-top: -1px;
+}
+
+.ngx-slider-marker-vertical.ngx-slider-marker-sub {
+  width: 10px;
+}
+
+.ngx-slider-marker-vertical.ngx-slider-marker-large {
+  width: 15px;
+}
+
+.ngx-slider-tooltip {
+  padding: 6px 0;
+  color: $white;
+  text-align: center;
+  text-decoration: none;
+  background-color: rgba($gray-900, 0.9);
+  border-radius: $border-radius-sm;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.17);
+  min-width: 70px;
+  white-space: nowrap;
+  position: absolute;
+  font-size: $font-size-xs / 1.2;
+
+  &::after {
+    position: absolute;
+    content: '';
+    border-color: transparent;
+    border-style: solid;
+    bottom: -5px;
+    margin-left: -5px;
+    border-width: 5px 5px 0;
+    left: 50%;
+    border-top-color: rgba($gray-900, 0.9);
+  }
+}
+
+.ngx-slider-horizontal .ngx-slider-tooltip {
+  transform: translate(-50%, 0);
+  left: 50%;
+  bottom: 165%;
+}
+
+.ngx-slider-vertical .ngx-slider-tooltip {
+  transform: translate(0, -50%);
+  top: 50%;
+  right: 165%;
+}

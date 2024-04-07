@@ -1,0 +1,10 @@
+{
+  "gimnasio-uiApp": {
+    "STATUS": {
+      "null": "",
+      "ACTIVATED": "ACTIVATED",
+      "NOTACTIF": "NOTACTIF",
+      "NOTACTIVATED": "INACTIVATED"
+    }
+  }
+}

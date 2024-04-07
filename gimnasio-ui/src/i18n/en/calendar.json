@@ -1,0 +1,37 @@
+{
+  "gimnasio-uiApp": {
+    "calendar": {
+      "home": {
+        "title": "Calendar",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Calendar",
+        "createOrEditLabel": "Create or edit a Calendar",
+        "notFound": "No Calendars found"
+      },
+      "created": "A new Calendar is created with identifier {{ param }}",
+      "updated": "A Calendar is updated with identifier {{ param }}",
+      "deleted": "A Calendar is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Calendar {{ id }}?"
+      },
+      "detail": {
+        "title": "Calendar"
+      },
+      "id": "ID",
+      "gymId": "Gym Id",
+      "gym": "Gym",
+      "today": "Today",
+      "month":"Month",
+      "week":"Week",
+      "day":"Day",
+      "endHour": "Closing Hours",
+      "startHour": "Starting Hours",
+      "offDays" : "Off Days",
+      "unit": "Unit",
+      "lastModifiedDate": "Last Modified Date",
+      "lastModifiedBy": "Last Modified By",
+      "createdDate": "Created Date",
+      "createdBy": "Created By"
+    }
+  }
+}

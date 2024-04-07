@@ -1,0 +1,22 @@
+<form *ngIf="gym" name="deleteForm" (ngSubmit)="confirmDelete(gym.id!)">
+  <div class="modal-header">
+    <h4 class="modal-title" data-cy="checkinDeleteDialogHeading">Activate Gym Operation</h4>
+
+    <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()">&times;</button>
+  </div>
+
+  <div class="modal-body">
+    <jhi-alert-error></jhi-alert-error>
+    <p id="jhi-delete-checkin-heading">Are you sure you want to Active Gym {{ gym.name }}?</p>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+      <span jhiTranslate="entity.action.cancel">Cancel</span>
+    </button>
+
+    <button id="jhi-confirm-delete-checkin" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-success">
+      <span jhiTranslate="entity.action.confirm">Confirm</span>
+    </button>
+  </div>
+</form>

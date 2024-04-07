@@ -1,0 +1,69 @@
+{
+  "gimnasio-uiApp": {
+    "pack": {
+      "home": {
+        "title": "Packs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Pack",
+        "createOrEditLabel": "Create or edit a Pack",
+        "notFound": "No Packs found"
+      },
+      "created": "A new Pack is created with identifier {{ param }}",
+      "updated": "A Pack is updated with identifier {{ param }}",
+      "deleted": "A Pack is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Pack {{ id }}?"
+      },
+      "detail": {
+        "title": "Pack"
+      },
+      "id": "ID",
+      "name": "Name",
+      "description": "Description",
+      "workoutSessions": "Workout Sessions",
+      "remainingSessions": "Remaining Sessions",
+      "badge": "Badge",
+      "lastModifiedDate": "Last Modified Date",
+      "lastModifiedBy": "Last Modified By",
+      "createdDate": "Created Date",
+      "createdBy": "Created By",
+      "gym": "Gym",
+      "price": "Price",
+      "status": "Status",
+      "enable": "Active",
+      "autoConfirm": "Auto confirm",
+      "addPack": "Add Pack"
+    },
+    "criteria": {
+      "home": {
+        "title": "Criterias",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Criteria",
+        "createOrEditLabel": "Create or edit a Criteria",
+        "notFound": "No Criterias found"
+      },
+      "created": "A new Criteria is created with identifier {{ param }}",
+      "updated": "A Criteria is updated with identifier {{ param }}",
+      "deleted": "A Criteria is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Criteria {{ id }}?"
+      },
+      "detail": {
+        "title": "Criteria"
+      },
+      "id": "ID",
+      "name": "Name",
+      "description": "Description",
+      "badge": "Badge",
+      "lastModifiedDate": "Last Modified Date",
+      "lastModifiedBy": "Last Modified By",
+      "createdDate": "Created Date",
+      "createdBy": "Created By",
+      "gym": "Gym",
+      "price": "Price",
+      "status": "Status",
+      "enable": "Active",
+      "display": "Display"
+    }
+  }
+}

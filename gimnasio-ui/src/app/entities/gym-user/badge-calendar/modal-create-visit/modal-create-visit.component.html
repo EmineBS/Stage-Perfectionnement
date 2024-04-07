@@ -1,0 +1,39 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="showUser" *ngIf="VisitDay">Visit At {{ VisitDay | date: 'short' }}</h4>
+
+  <button aria-label="Close" data-dismiss="modal" class="btn-close" type="button" (click)="dismiss()">
+    <span aria-hidden="true"></span>
+  </button>
+</div>
+
+<div class="modal-body pad">
+  <div *ngIf="DateVisit">
+    <h5 class="mb-3">Visit informations</h5>
+
+    <div>
+      <div class="d-flex align-items-center">
+        <dl class="col-12">
+          <dt><span>Pack name</span></dt>
+          <dd class="alert view-details">
+            <span>{{ PackName }}</span>
+          </dd>
+          <div class="divider my-3"></div>
+          <dt><span>Starts at</span></dt>
+          <dd class="alert view-details">
+            <span>{{ DateVisit }}</span>
+          </dd>
+          <div class="divider my-3"></div>
+          <dt><span>Ends at</span></dt>
+          <dd class="alert view-details">
+            <span>{{ DateEnds }}</span>
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button data-dismiss="modal" class="btn btn-primary float-start" type="button" (click)="AddVisit()">Add Visit</button>
+  <button data-dismiss="modal" class="btn btn-secondary float-start" type="button" (click)="dismiss()">Cancel</button>
+</div>

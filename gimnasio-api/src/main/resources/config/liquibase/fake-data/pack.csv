@@ -1,0 +1,5 @@
+id;name;description;workout_sessions;price;auto_confirm;gym_id
+1212;pack-a;pack-a-desc;6;202.0;true;1111
+1313;pack-b;pack-b-desc;8;202.0;true;1111
+1414;pack-c;pack-c-desc;10;202.0;true;1111
+1515;pack-d;pack-d-desc;12;202.0;true;2222

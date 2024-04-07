@@ -1,0 +1,11 @@
+{
+  "gimnasio-uiApp": {
+    "navBadges": {
+      "badgeDetails":"Badge details",
+      "profileDetails":"Profile details",
+      "chckinBadge":"Checkin Badge",
+      "packs":"Packs",
+      "progress":"Progress"
+    }
+  }
+}

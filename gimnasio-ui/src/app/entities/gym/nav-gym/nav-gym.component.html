@@ -1,0 +1,73 @@
+<div class="card card-box mb-3 nav-content">
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs mb-5" type="tabs">
+    <li [ngbNavItem]="1" (click)="changeActiveTab(1)" [destroyOnHide]="true">
+      <div class="card-header">
+        <div class="card-header--title">
+          <a ngbNavLink>gym details</a>
+        </div>
+      </div>
+
+      <ng-template ngbNavContent>
+        <jhi-gym-detail></jhi-gym-detail>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="2" (click)="changeActiveTab(2)" [destroyOnHide]="true">
+      <div class="card-header">
+        <div class="card-header--title">
+          <a ngbNavLink>Badges</a>
+        </div>
+      </div>
+
+      <ng-template ngbNavContent>
+        <jhi-gym-badges></jhi-gym-badges>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="3" (click)="changeActiveTab(3)" [destroyOnHide]="true">
+      <div class="card-header">
+        <div class="card-header--title">
+          <a ngbNavLink>Packs</a>
+        </div>
+      </div>
+
+      <ng-template ngbNavContent>
+        <jhi-gym-packs></jhi-gym-packs>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="4" (click)="changeActiveTab(4)" [destroyOnHide]="true">
+      <div class="card-header">
+        <div class="card-header--title">
+          <a ngbNavLink>Users</a>
+        </div>
+      </div>
+
+      <ng-template ngbNavContent>
+        <jhi-gym-users></jhi-gym-users>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="5" (click)="changeActiveTab(5)" [destroyOnHide]="true">
+      <div class="card-header">
+        <div class="card-header--title">
+          <a ngbNavLink>Features</a>
+        </div>
+      </div>
+
+      <ng-template ngbNavContent>
+        <jhi-gym-features></jhi-gym-features>
+      </ng-template>
+    </li>
+
+    <li [ngbNavItem]="6" (click)="changeActiveTab(6)" [destroyOnHide]="true">
+      <div class="card-header">
+        <div class="card-header--title">
+          <a ngbNavLink>Amine</a>
+        </div>
+      </div>
+
+      <ng-template ngbNavContent>
+        <jhi-gym-amine></jhi-gym-amine>
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>

@@ -1,0 +1,41 @@
+<div class="d-flex">
+  <div class="col-12">
+    <div>
+          <div class="col-12">
+            <div>
+              <div>
+                <dl class="row-md jh-entity-details">
+                  <dt ><span jhiTranslate="global.field.id">ID</span></dt>
+                  <dd class="alert view-details">
+                    <span>{{ user?.id }}</span>
+                  </dd>
+                  <dt><span jhiTranslate="userManagement.login">Login</span></dt>
+                  <dd class="alert view-details">
+                    <span>{{ user?.login }}</span>
+                  </dd>
+                  <dt><span jhiTranslate="userManagement.email">Email</span></dt>
+                  <dd class="alert view-details">
+                    <span>{{ user?.email }}</span>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+
+        <div class="card-footer p-4">
+          <div class="align-box-row mt-3">
+            <div class="ml-auto">
+              <button
+                type="submit"
+                (click)="previousState()"
+                class="btn btn-neutral-first mr-2"
+                data-cy="entityDetailsBackButton"
+              >
+                <span jhiTranslate="entity.action.back">Back</span>
+              </button>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

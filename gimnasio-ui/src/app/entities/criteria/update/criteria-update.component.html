@@ -1,0 +1,94 @@
+<div customClass="px-1 py-2 ">
+  <div class="mt-2 py-2 row justify-content-center">
+    <div class="card card-box col-xl-6">
+      <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+        <div class="card-header">
+          <div class="card-header--title">
+            <h5 id="jhi-criteria-heading" class="card-header--title font-weight-bold py-2" data-cy="criteriaCreateUpdateHeading">
+              <span *ngIf="editForm.controls.id.value === null">Add a criteria</span>
+            </h5>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <jhi-alert-error></jhi-alert-error>
+
+          <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+
+          <div class="row mb-3">
+            <label class="form-label" jhiTranslate="gimnasio-uiApp.criteria.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          </div>
+
+          <div class="row mb-3">
+            <label class="form-label" jhiTranslate="gimnasio-uiApp.criteria.description" for="field_description">Description</label>
+            <input
+              type="text"
+              class="form-control"
+              name="description"
+              id="field_description"
+              data-cy="description"
+              formControlName="description"
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="field_enabled">Enabled</label>
+            <input
+              type="checkbox"
+              class="form-check-input ml-2"
+              name="enabled"
+              id="field_enabled"
+              data-cy="enabled"
+              formControlName="enabled"
+            />
+          </div>
+
+          <div class="row mb-3">
+            <label class="form-label" jhiTranslate="gimnasio-uiApp.criteria.display" for="field_display">Display</label>
+            <select class="form-control" id="field_display" data-cy="display" name="display" formControlName="display">
+              <option [ngValue]="null"></option>
+              <option [ngValue]="displayOption" *ngFor="let displayOption of criteriaDisplay">{{ displayOption }}</option>
+            </select>
+          </div>
+
+          <div class="row mb-3">
+            <label class="form-label" jhiTranslate="gimnasio-uiApp.criteria.gym" for="field_gym">Gym</label>
+            <select class="form-control" id="field_gym" data-cy="gym" name="gym" formControlName="gym" [compareWith]="compareGym">
+              <option [ngValue]="null"></option>
+              <option [ngValue]="gymOption" *ngFor="let gymOption of gymsSharedCollection">{{ gymOption.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="card-footer bg-light p-4 row">
+          <div class="align-box-row mt-3">
+            <div class="ml-auto">
+              <button
+                type="button"
+                id="cancel-save"
+                data-cy="entityCreateCancelButton"
+                class="btn btn-neutral-first"
+                (click)="previousState()"
+              >
+                <span jhiTranslate="entity.action.cancel">Cancel</span>
+              </button>
+
+              <button
+                type="submit"
+                id="save-entity"
+                data-cy="entityCreateSaveButton"
+                [disabled]="editForm.invalid || isSaving"
+                class="btn btn-primary"
+              >
+                <span jhiTranslate="entity.action.save">Save</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

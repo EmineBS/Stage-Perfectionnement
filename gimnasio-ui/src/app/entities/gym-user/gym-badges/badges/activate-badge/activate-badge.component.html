@@ -1,0 +1,22 @@
+<form *ngIf="badge" name="activateForm" (ngSubmit)="confirmActivate(badge.id!)">
+  <div class="modal-header">
+    <h4 class="modal-title" data-cy="checkinActivateDialogHeading">Deactivate Badge Operation</h4>
+
+    <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()">&times;</button>
+  </div>
+
+  <div class="modal-body">
+    <jhi-alert-error></jhi-alert-error>
+    <p id="jhi-activate-checkin-heading">Are you sure you want to Activate Badge {{ badge.uid }}?</p>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+      <span jhiTranslate="entity.action.cancel">Cancel</span>
+    </button>
+
+    <button id="jhi-confirm-activate-checkin" data-cy="entityConfirmActivateButton" type="submit" class="btn btn-danger">
+      <span jhiTranslate="entity.action.confirm">Confirm</span>
+    </button>
+  </div>
+</form>

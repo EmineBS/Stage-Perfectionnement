@@ -1,0 +1,11 @@
+{
+  "groups": [
+    {
+      "name": "application",
+      "type": "com.alphalab.config.ApplicationProperties",
+      "sourceType": "com.alphalab.config.ApplicationProperties"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}

@@ -1,0 +1,42 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="showUser" *ngIf="user">User</h4>
+
+  <button aria-label="Close" data-dismiss="modal" class="btn-close" type="button" (click)="dismiss()">
+    <span aria-hidden="true"></span>
+  </button>
+</div>
+
+<div class="modal-body pad">
+  <div *ngIf="user">
+    <h5>Details</h5>
+
+    <div class="table-responsive">
+      <table class="table table-striped" aria-describedby="showuserHash">
+        <thead>
+          <tr>
+            <th scope="col" class="text-start">Name</th>
+            <th scope="col" class="text-start">Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-start">ID</td>
+            <td class="text-start">{{ user?.id }}</td>
+          </tr>
+          <tr>
+            <td class="text-start">Name</td>
+            <td class="text-start">{{ user?.name }}</td>
+          </tr>
+          <tr>
+            <td class="text-start">Email</td>
+            <td class="text-start">{{ user?.description }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button data-dismiss="modal" class="btn btn-secondary float-start" type="button" (click)="dismiss()">Done</button>
+</div>

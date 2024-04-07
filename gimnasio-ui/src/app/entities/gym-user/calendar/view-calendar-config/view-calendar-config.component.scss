@@ -1,0 +1,18 @@
+.multiselect {
+    width: 200px;
+    height: 150px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+  }
+  
+  .multiselect option {
+    padding: 4px;
+  }
+  
+  .multiselect:focus {
+    outline: none;
+    box-shadow: 0 0 4px #8ab6d6;
+  }

@@ -1,0 +1,48 @@
+<div id="loadingIndicator">
+  <div class="spinner"></div>
+</div>
+<div class="app-wrapper bg-white">
+  <div class="app-main">
+    <div class="app-content p-0">
+      <div class="app-inner-content-layout--main">
+        <div class="flex-grow-1 w-100 d-flex align-items-center">
+          <div class="bg-composed-wrapper--content">
+            <div class="hero-wrapper bg-composed-wrapper bg-plum-plate bg-arielle-smile min-vh-100">
+              <div class="flex-grow-1 w-100 d-flex align-items-center">
+                <div class="bg-composed-wrapper--image" style="background-image: url('content/images/hero-1.jpg')"></div>
+                <div class="bg-composed-wrapper--bg bg-second opacity-5"></div>
+                <div class="bg-composed-wrapper--content text-center py-5">
+                  <form [formGroup]="form">
+                    <div class="col-xl-7 col-lg-7 col-md-10 col-sm-12 mx-auto text-center text-white">
+                      <h1 class="display-1 mb-3 px-4 font-weight-bold">CHECK-IN VIA BADGE</h1>
+                      <div class="row no-gutters">
+                        <div class="col-sm-12 col-lg-9 mt-3 px-2">
+                          <input
+                            class="form-control form-control-lg"
+                            formControlName="badge"
+                            placeholder="ENTER A BADGE UID"
+                            [(ngModel)]="message"
+                            type="text"
+                          />
+                        </div>
+                        <div class="col-sm-12 col-lg-3 mt-3 px-2">
+                          <button
+                            [disabled]="form.invalid || loading"
+                            (click)="checkinBadgeUid()"
+                            class="btn d-block shadow-none w-100 btn-secondary btn-lg"
+                          >
+                            <span class="btn-wrapper--label"> CHECK-IN </span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

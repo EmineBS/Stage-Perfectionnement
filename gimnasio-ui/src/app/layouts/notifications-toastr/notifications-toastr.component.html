@@ -1,0 +1,20 @@
+<div class="text-center">
+  <button (click)="showNotification('primary', 'Good evening, you lovely person!')" class="btn m-2 btn-primary">Primary</button>
+  <button (click)="showNotification('info', 'This library is built on top of Angular.')" class="btn m-2 btn-info">Info</button>
+  <button (click)="showNotification('success', 'Notification successfully opened.')" class="btn m-2 btn-success">Success</button>
+  <button (click)="showNotification('warning', 'Warning! But not an error! Just a warning!')" class="btn m-2 btn-warning">Warning</button>
+  <button (click)="showNotification('danger', 'Whoops, something went wrong. Probably.')" class="btn m-2 btn-danger">Error</button>
+  <button (click)="showNotification('dark', 'Good evening, you lovely person!')" class="btn m-2 btn-dark">Dark</button>
+  <button (click)="showNotification('second', 'This library is built on top of Angular.')" class="btn m-2 btn-second">Darkest</button>
+  <button (click)="showNotification('first', 'Notification successfully opened.')" class="btn m-2 btn-first">Info alt</button>
+</div>
+
+<div class="divider my-3"></div>
+
+<div class="text-center">
+  <button (click)="hideAllNotifications()" class="btn btn-sm btn-outline-dark m-2">Hide all notifications!</button>
+  <button (click)="hideOldestNotification()" class="btn btn-sm btn-outline-dark m-2">Hide oldest notification!</button>
+  <button (click)="hideNewestNotification()" class="btn btn-sm btn-outline-dark m-2">Hide newest notification!</button>
+</div>
+
+<notifier-container></notifier-container>

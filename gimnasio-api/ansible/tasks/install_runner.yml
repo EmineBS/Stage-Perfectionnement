@@ -1,0 +1,48 @@
+---
+
+    #Check if runner configuration exists
+    - name: Check if runner configuration exists
+      stat:
+        path: "{{ runner_folder }}/.runner"
+      register: runner_config
+
+    #Configure Github Actions runner 
+    - name: Configure GitHub Actions runner
+      command: ./config.sh --url "{{ github_repository_path }}" --token "{{ runner_token }}" --name "{{ runner_name }}" --labels "{{ runner_labels }}" --work "_work" --unattended
+      args:
+        chdir: "{{ runner_folder }}"
+      when: not runner_config.stat.exists
+      become: false    
+
+      
+      # info about runner service
+    - name: Check if runner service exists
+      stat:
+        path: "{{ runner_folder }}/.service"
+      register: service_info
+
+
+      #install runner Service
+    - name: Install runner service
+      command: ./svc.sh install {{ ansible_user }} 
+      args:
+        chdir: "{{ runner_folder }}"
+      when: not service_info.stat.exists
+      become: true
+     
+      #read service name
+    - name: Read service name from service file
+      ansible.builtin.slurp:
+        src: "{{ runner_folder }}/.service"
+      register: runner_service
+
+      # Register the runner as a service
+    - name: Register GitHub runner as a systemd service
+      become: true
+      systemd:
+        name: "{{ runner_service.content | b64decode | replace('\n', '') }}"
+        enabled: yes
+        state: started
+        daemon_reload: yes
+
+    

@@ -1,0 +1,16 @@
+<div *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_USER', 'ROLE_BADGE']">
+  <div
+    [class]="'app-sidebar app-sidebar--' + globals.sidebarBackgroundStyle + ' ' + globals.sidebarBackground"
+    [ngClass]="{
+      'app-sidebar--lighter': globals.sidebarLighterStyle,
+      'app-sidebar--shadow': globals.sidebarShadow
+    }"
+  >
+    <jhi-sidebar-header></jhi-sidebar-header>
+    <div class="app-sidebar--content">
+      <jhi-sidebar-menu></jhi-sidebar-menu>
+    </div>
+    <jhi-sidebar-footer *ngIf="globals.sidebarFooter"></jhi-sidebar-footer>
+  </div>
+  <div class="app-sidebar-overlay" (click)="toggleSidebarMobileOpen()" [ngClass]="{ 'is-active': globals.toggleSidebarMobile }"></div>
+</div>

@@ -1,0 +1,122 @@
+<div class="row justify-content-center">
+  <div class="col-12">
+    <div class="col-12">
+      <form [formGroup]="form">
+        <div>
+          <div class="mb-3">
+            <label class="form-label">Add Feature to {{ gymName }}</label>
+            <select class="form-control" formControlName="featureId">
+              <option [ngValue]="null" *ngIf="featuresSharedCollection.length == 0">No Features to add</option>
+              <option [ngValue]="null"></option>
+              <option [ngValue]="featureOption.id" *ngFor="let featureOption of featuresSharedCollection">{{ featureOption.name }}</option>
+            </select>
+          </div>
+
+          <button [disabled]="form.invalid" (click)="save()" class="btn d-block shadow-none w-100 btn-secondary btn-lg">
+            <span class="btn-wrapper--label"> Add Feature </span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-11 mt-4">
+    <div class="col-12" *ngIf="features?.length === 0">
+      <div class="alert alert-warning" id="no-result">
+        <span>No Features found</span>
+      </div>
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+    </div>
+    <div class="card-body p-0">
+      <div class="table-responsive" style="height: 40vh" *ngIf="features && features.length > 0">
+        <table class="table table-striped text-nowrap table-bordered table-hover mb-0">
+          <thead class="thead-light">
+            <tr jhiSort>
+              <th scope="col" jhiSortBy="id">
+                <div class="d-flex">
+                  <span jhiTranslate="global.field.id">ID</span>
+                </div>
+              </th>
+              <th scope="col" jhiSortBy="featureId">
+                <div class="text-center">
+                  <span>Feature</span>
+                </div>
+              </th>
+              <th scope="col" jhiSortBy="lastModifiedDate">
+                <div class="text-center">
+                  <span jhiTranslate="gimnasio-uiApp.badge.lastModifiedDate">last Modified Date</span>
+                </div>
+              </th>
+              <th class="text-center"><span jhiTranslate="entity.action.title"></span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let feature of features" data-cy="entityTable">
+              <td>
+                <a>{{ formatId(feature.id) }}</a>
+              </td>
+              <td class="text-center">
+                <span> {{ feature.featureName }}</span>
+              </td>
+              <td class="text-center">
+                {{ feature.lastModifiedDate | date: 'medium' }}
+              </td>
+
+              <td class="text-center">
+                <div class="btn-group btn-group-sm" dropdown placement="bottom right" container="body">
+                  <button class="btn btn-sm px-2 py-0 dropdown-toggle no-caret btn-neutral-first" dropdownToggle type="button">
+                    <fa-icon class="font-size-lg" [icon]="['fas', 'ellipsis']" ngbTooltip="Actions"></fa-icon>
+                  </button>
+                  <div *dropdownMenu class="dropdown-menu dropdown-menu-xl p-0 dropdown-menu-right">
+                    <ul class="nav nav-neutral-first nav-pills flex-column pt-2 pb-3">
+                      <li class="nav-item nav-item--header px-3">
+                        <span class="text-capitalize text-black font-size-md font-weight-bold">
+                          <span jhiTranslate="entity.action.title"></span>
+                        </span>
+                      </li>
+                      <li class="dropdown-divider"></li>
+                      <li (click)="viewDetails(feature)" class="nav-item px-3">
+                        <a class="nav-link active">
+                          <span jhiTranslate="entity.action.view"></span>
+                          <div class="ml-auto badge badge-first">New</div>
+                        </a>
+                      </li>
+                      <li class="dropdown-divider"></li>
+                      <li class="nav-item">
+                        <a (click)="delete(feature)" class="nav-link text-danger mx-3">
+                          <div class="nav-link-icon">
+                            <fa-icon [icon]="['fas', 'times']"></fa-icon>
+                          </div>
+                          <span jhiTranslate="entity.action.delete"></span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="divider"></div>
+      <div *ngIf="features && features.length > 0" class="p-4">
+        <div class="d-flex justify-content-center">
+          <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+        </div>
+
+        <div class="d-flex justify-content-center mb-3">
+          <ngb-pagination
+            [collectionSize]="totalItems"
+            [page]="page"
+            [pageSize]="itemsPerPage"
+            [maxSize]="5"
+            [rotate]="true"
+            [boundaryLinks]="true"
+            (pageChange)="navigateToPage($event)"
+          ></ngb-pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,145 @@
+<div class="d-flex">
+  <div class="col-12">
+    <div>
+      <form novalidate (ngSubmit)="confirm()" [formGroup]="editForm">
+        <div *ngIf="profile">
+          <div class="col-12">
+            <div>
+              <div>
+                <jhi-alert-error></jhi-alert-error>
+                <jhi-alert></jhi-alert>
+                <dl class="row-md jh-entity-details">
+                  <!-- Email input -->
+                  <dt><span>Email</span></dt>
+                  <dd class="alert view-details" *ngIf="!edit">
+                    <span>{{ profile.email }}</span>
+                  </dd>
+                  <dd class="alert view-details" *ngIf="edit">
+                    <input
+                      *ngIf="profile.email"
+                      type="email"
+                      placeholder="email"
+                      name="email"
+                      class="form-control form-edit"
+                      id="email"
+                      formControlName="email"
+                      value="{{ profile.email }}"
+                    />
+
+                    <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
+                      <div class="form-text text-danger" *ngIf="editForm.get('email')?.errors?.required">This field is required.</div>
+                      <div class="form-text text-danger" *ngIf="editForm.get('email')?.errors?.email">Invalid email format.</div>
+                    </div>
+                  </dd>
+
+                  <!-- Last name  input -->
+                  <dt><span>Last Name</span></dt>
+                  <dd class="alert view-details" *ngIf="!edit">
+                    <span>{{ profile.lastName }}</span>
+                  </dd>
+                  <dd class="alert view-details" *ngIf="edit">
+                    <input
+                      type="text"
+                      placeholder="lastName"
+                      name="lastName"
+                      class="form-control form-edit"
+                      id="lastName"
+                      formControlName="lastName"
+                      value="{{ profile.lastName }}"
+                    />
+
+                    <div
+                      *ngIf="editForm.get('lastName')!.invalid && (editForm.get('lastName')!.dirty || editForm.get('lastName')!.touched)"
+                    >
+                      <small class="form-text text-danger" *ngIf="editForm.get('lastName')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
+                  </dd>
+
+                  <!-- Name input -->
+                  <dt><span>First Name</span></dt>
+                  <dd class="alert view-details" *ngIf="!edit">
+                    <span>{{ profile.name }}</span>
+                  </dd>
+                  <dd class="alert view-details" *ngIf="edit">
+                    <input
+                      type="text"
+                      placeholder="name"
+                      name="name"
+                      class="form-control form-edit"
+                      id="name"
+                      formControlName="name"
+                      value="{{ profile.name }}"
+                    />
+
+                    <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+                      <small class="form-text text-danger" *ngIf="editForm.get('name')?.errors?.required"> This field is required. </small>
+                    </div>
+                  </dd>
+
+                  <!-- Phone number -->
+                  <dt><span>PhoneNumber</span></dt>
+                  <dd class="alert view-details" *ngIf="!edit">
+                    <span>{{ profile.phoneNumber }}</span>
+                  </dd>
+                  <dd class="alert view-details" *ngIf="edit">
+                    <input
+                      *ngIf="profile.phoneNumber"
+                      type="text"
+                      placeholder="phoneNumber"
+                      name="phoneNumber"
+                      class="form-control form-edit"
+                      id="phoneNumber"
+                      formControlName="phoneNumber"
+                      value="{{ profile.phoneNumber }}"
+                    />
+
+                    <div
+                      *ngIf="
+                        editForm.get('phoneNumber')!.invalid && (editForm.get('phoneNumber')!.dirty || editForm.get('phoneNumber')!.touched)
+                      "
+                    >
+                      <small class="form-text text-danger" *ngIf="editForm.get('phoneNumber')?.errors?.required">
+                        This field is required.
+                      </small>
+                    </div>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer p-4">
+          <div class="align-box-row mt-3">
+            <div class="ml-auto">
+              <button
+                *ngIf="edit"
+                type="submit"
+                (click)="cancelEdit()"
+                class="btn btn-neutral-first mr-2"
+                data-cy="entityDetailsBackButton"
+              >
+                <span jhiTranslate="entity.action.cancel">Cancel</span>
+              </button>
+              <button type="button" (click)="editF()" *ngIf="!edit" class="btn btn-primary">
+                <span jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+              <button
+                type="submit"
+                *ngIf="edit"
+                id="save-entity"
+                data-cy="entityCreateSaveButton"
+                [disabled]="editForm.invalid || isSaving"
+                class="btn btn-primary"
+              >
+                <span jhiTranslate="entity.action.save">Save</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

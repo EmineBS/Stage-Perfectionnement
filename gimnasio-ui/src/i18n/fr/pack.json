@@ -1,0 +1,38 @@
+{
+  "gimnasio-uiApp": {
+    "pack": {
+      "home": {
+        "title": "Packs",
+        "refreshListLabel": "Rafraîchir la liste",
+        "createLabel": "Créer un nouveau pack",
+        "createOrEditLabel": "Créer ou modifier un pack",
+        "notFound": "Pas de pack"
+      },
+      "created": "Un nouveau Pack est créé avec identifiant {{ param }}",
+      "updated": "Un pack est mis à jour avec l'identifiant {{ param }}",
+      "deleted": "Un pack est supprimé avec identifiant {{ param }}",
+      "delete": {
+        "question": "Êtes-vous sûr de vouloir supprimer le pack {{ id }}?"
+      },
+      "detail": {
+        "title": "Pack"
+      },
+      "id": "ID",
+      "name": "Nom",
+      "description": "Description",
+      "workoutSessions": "Nombre des séances d'entraînement",
+      "remainingSessions": "Sessions restantes",
+      "badge": "Badge",
+      "lastModifiedDate": "Date de la dernière modification",
+      "lastModifiedBy": "Dernière modification par",
+      "createdDate": "Date de création",
+      "createdBy": "Créé par",
+      "gym": "Gym",
+      "price": "Prix",
+      "status": "Status",
+      "enable": "Active",
+      "autoConfirm": "Auto confirmation",
+      "addPack": "Ajouter un pack"
+    }
+  }
+}

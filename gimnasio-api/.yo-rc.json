@@ -1,0 +1,59 @@
+{
+  "generator-jhipster": {
+    "applicationType": "gateway",
+    "authenticationType": "oauth2",
+    "baseName": "gimnasio",
+    "blueprints": [],
+    "buildTool": "gradle",
+    "cacheProvider": "no",
+    "clientFramework": "angularX",
+    "clientPackageManager": "npm",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1676477314027,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "devServerPort": 4200,
+    "dtoSuffix": "DTO",
+    "enableGradleEnterprise": false,
+    "enableHibernateCache": false,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "entities": ["Blockchain", "Address"],
+    "entitySuffix": "",
+    "jhiPrefix": "jhi",
+    "jhipsterVersion": "7.9.3",
+    "jwtSecretKey": "NTU3MWJjODQzMzlhZTM2NThhY2Y0Yzc1ZDAwZTg0ODBkNzBjMmYwODJhNTcwNjkxYmE4OTJlNGIyNmI5N2UxY2RjZGZmMzk0Nzg0NDk4MWZkMDc1M2VhZjYzNzViYTAyZTMwM2RhYjQwNmY4YmVkZGRjZTUxNDhkYTZmMDI0OGU=",
+    "languages": ["en"],
+    "lastLiquibaseTimestamp": 1676481254000,
+    "messageBroker": false,
+    "microfrontend": true,
+    "microfrontends": [
+      {
+        "baseName": "address"
+      },
+      {
+        "baseName": "blockchain"
+      }
+    ],
+    "monorepository": true,
+    "nativeLanguage": "en",
+    "otherModules": [],
+    "packageName": "com.alphalab",
+    "pages": [],
+    "prodDatabaseType": "postgresql",
+    "reactive": true,
+    "searchEngine": false,
+    "serverPort": "8080",
+    "serverSideOptions": [],
+    "serviceDiscoveryType": "consul",
+    "skipCheckLengthOfIdentifier": false,
+    "skipClient": false,
+    "skipCommitHook": true,
+    "skipFakeData": false,
+    "skipUserManagement": true,
+    "testFrameworks": [],
+    "websocket": false,
+    "withAdminUi": true
+  }
+}

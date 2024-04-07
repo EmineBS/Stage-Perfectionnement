@@ -1,0 +1,6 @@
+id;name;description;badge_amount;location;phone_number;email;registration_number;status
+1111;a-sports;a-sports-desc;10;tunis;20202020;a-sports@gmail.com;12121212121;ACTIVE
+2222;b-sports;a-sports-desc;30;nabeul;20202020;b-sports@gmail.com;45454545454;ACTIVE
+3333;c-sports;a-sports-desc;20;sousse;20202020;c-sports@gmail.com;78787878787;ACTIVE
+4444;d-sports;a-sports-desc;40;touzer;20202020;d-sports@gmail.com;141414141414;ACTIVE
+5555;e-sports;a-sports-desc;50;ariana;20202020;e-sports@gmail.com;58585858585858;ACTIVE

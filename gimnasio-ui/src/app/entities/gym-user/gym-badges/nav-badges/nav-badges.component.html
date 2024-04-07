@@ -1,0 +1,73 @@
+<div class="card card-box mb-3 nav-content">
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs mb-5" type="tabs">
+    <li [ngbNavItem]="1" (click)="changeActiveTab(1)" [destroyOnHide]="true">
+      <div class="card-header">
+        <div class="card-header--title">
+          <a ngbNavLink jhiTranslate="gimnasio-uiApp.navBadges.badgeDetails">Badge details</a>
+        </div>
+      </div>
+
+      <ng-template ngbNavContent>
+        <jhi-view-badge></jhi-view-badge>
+      </ng-template>
+    </li>
+
+    <li [ngbNavItem]="2" (click)="changeActiveTab(2)" [destroyOnHide]="true">
+      <div class="card-header">
+        <div class="card-header--title">
+          <a ngbNavLink jhiTranslate="gimnasio-uiApp.navBadges.profileDetails">Profile details</a>
+        </div>
+      </div>
+
+      <ng-template ngbNavContent>
+        <jhi-profile-detail></jhi-profile-detail>
+      </ng-template>
+    </li>
+
+    <li [ngbNavItem]="3" (click)="changeActiveTab(3)" [destroyOnHide]="true">
+      <div class="card-header">
+        <div class="card-header--title">
+          <a ngbNavLink jhiTranslate="gimnasio-uiApp.navBadges.chckinBadge">Checkin Badge</a>
+        </div>
+      </div>
+
+      <ng-template ngbNavContent>
+        <jhi-checkin-badge></jhi-checkin-badge>
+      </ng-template>
+    </li>
+
+    <li [ngbNavItem]="4" (click)="changeActiveTab(4)" [destroyOnHide]="true">
+      <div class="card-header">
+        <div class="card-header--title">
+          <a ngbNavLink jhiTranslate="gimnasio-uiApp.navBadges.packs">Packs</a>
+        </div>
+      </div>
+
+      <ng-template ngbNavContent>
+        <jhi-badge-pack></jhi-badge-pack>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="5" (click)="changeActiveTab(5)" [destroyOnHide]="true">
+      <div class="card-header">
+        <div class="card-header--title">
+          <a ngbNavLink jhiTranslate="gimnasio-uiApp.navBadges.progress">Progress</a>
+        </div>
+      </div>
+
+      <ng-template ngbNavContent>
+        <jhi-progress></jhi-progress>
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+  <div class="card-footer p-4">
+    <div class="align-box-row mt-3">
+      <div class="ml-auto">
+        <button type="submit" (click)="previousState()" class="btn btn-neutral-first mr-2" data-cy="entityDetailsBackButton">
+          <span jhiTranslate="entity.action.back">Back</span></button>
+      </div>
+    </div>
+  </div>
+
+</div>

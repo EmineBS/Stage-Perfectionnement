@@ -1,0 +1,27 @@
+---
+  #Uninstall the service
+   - name: Uninstall runner service
+     command: ./svc.sh uninstall
+     args:
+       chdir: "{{ runner_folder }}"
+     become: true
+
+   #remove runner registration
+   - name: Deregister Runner
+     command: ./config.sh remove --token {{ runner_token }}
+     args:
+       chdir: "{{ runner_folder }}"
+     become: false
+
+     #Delete the runner install folder
+   - name: Delete runner install folder
+     file:
+       state: absent
+       path: "{{ runner_folder }}/bin"
+     become: true
+
+   - name: Delete runner workspace folder
+     file:
+       state: absent
+       path: "{{ runner_folder }}/_work"
+     become: true

@@ -1,0 +1,27 @@
+---
+    - name: Check if Docker is installed
+      command: which docker
+      register: docker_check
+      ignore_errors: true
+
+    - name: Install docker if not exist
+      block:
+        - name: Add Docker GPG key
+          apt_key:
+            url: https://download.docker.com/linux/ubuntu/gpg
+            state: present
+          
+        - name: Add Docker APT repository
+          apt_repository:
+            repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename }} stable"
+            state: present
+
+        - name: Update APT cache
+          apt:
+            update_cache: yes
+
+        - name: Install Docker
+          apt:
+            name: docker-ce
+            state: present
+      when: docker_check.rc != 0

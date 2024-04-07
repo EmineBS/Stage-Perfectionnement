@@ -1,0 +1,11 @@
+{
+  "gimnasio-uiApp": {
+    "visit": {
+      "title": "Title",
+      "startsAt": "Starts at",
+      "endsAt": "Ends at",
+      "saveRDV": "Save Visit",
+      "rdvDate": "Visit Date"
+    }
+  }
+}

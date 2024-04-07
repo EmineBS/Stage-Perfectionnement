@@ -1,0 +1,41 @@
+<div class="card card-box mb-3 nav-content">
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs mb-5" type="tabs">
+    <li [ngbNavItem]="1" (click)="changeActiveTab(1)" [destroyOnHide]="true">
+      <div class="card-header">
+        <div class="card-header--title">
+          <a ngbNavLink>Badge details</a>
+        </div>
+      </div>
+
+      <ng-template ngbNavContent>
+        <jhi-badge-detail></jhi-badge-detail>
+      </ng-template>
+    </li>
+
+    <li [ngbNavItem]="2" (click)="changeActiveTab(2)" [destroyOnHide]="true">
+      <div class="card-header">
+        <div class="card-header--title">
+          <a ngbNavLink>Check In</a>
+        </div>
+      </div>
+
+      <ng-template ngbNavContent>
+        <jhi-checkin-badge></jhi-checkin-badge>
+      </ng-template>
+    </li>
+
+    <li [ngbNavItem]="3" (click)="changeActiveTab(3)" [destroyOnHide]="true">
+      <div class="card-header">
+        <div class="card-header--title">
+          <a ngbNavLink>Packs</a>
+        </div>
+      </div>
+
+      <ng-template ngbNavContent>
+        <jhi-badge-pack></jhi-badge-pack>
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>

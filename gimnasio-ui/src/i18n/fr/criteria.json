@@ -1,0 +1,35 @@
+{
+  "gimnasio-uiApp": {
+    "criteria": {
+      "home": {
+        "title": "Critères",
+        "refreshListLabel": "Rafraîchir la liste",
+        "createLabel": "Créer un nouveau critère",
+        "createOrEditLabel": "Créer ou modifier une Critère",
+        "notFound": "Aucune Critère trouvé"
+      },
+      "created": "Un nouveau critère est créé avec identifiant {{ param }}",
+      "updated": "Un critère est mis à jour avec l'identifiant {{ param }}",
+      "deleted": "Un critère est supprimé avec identifiant {{ param }}",
+      "delete": {
+        "question": "Êtes-vous sûr de vouloir supprimer le critère {{ id }}?"
+      },
+      "detail": {
+        "title": "Critère"
+      },
+      "id": "ID",
+      "name": "Nom",
+      "description": "Description",
+      "badge": "Badge",
+      "lastModifiedDate": "Date de la dernière modification",
+      "lastModifiedBy": "Dernière modification par",
+      "createdDate": "Date de création",
+      "createdBy": "Créé par",
+      "gym": "Gym",
+      "price": "Prix",
+      "status": "Status",
+      "enable": "Active",
+      "display": "Affichage"
+    }
+  }
+}

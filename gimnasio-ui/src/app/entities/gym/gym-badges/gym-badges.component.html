@@ -1,0 +1,214 @@
+<div class="col-12">
+  <div class="card-header pr-2">
+    <div class="col-12" *ngIf="badges?.length === 0">
+      <div class="alert alert-warning" id="no-result">
+        <span jhiTranslate="gimnasio-uiApp.badge.home.notFound">No Badges found</span>
+      </div>
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+    </div>
+    <div class="col-3"></div>
+    <div class="card-header--title col-12" *ngIf="badges?.length !== 0">
+      <!-- bar -->
+      <div class="col-6">
+        <div class="search-wrapper mb-4">
+          <div class="input-group row">
+            <input
+              type="text"
+              [ngbTypeahead]="search"
+              placeholder="Badge UID"
+              [(ngModel)]="filter"
+              (ngModelChange)="filterAndSort()"
+              class="form-control"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- bar -->
+    </div>
+  </div>
+  <div class="card-body p-0">
+    <div class="table-responsive" style="min-height: 40vh" *ngIf="badges && badges.length > 0" id="entities">
+      <table class="table table-bordered table-striped mb-0 table-hover mb-0">
+        <thead class="thead-light">
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="filterAndSort()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="uid">
+              <div class="text-center">
+                <span jhiTranslate="gimnasio-uiApp.badge.uid">uid</span>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="status">
+              <div class="text-center">
+                <span jhiTranslate="gimnasio-uiApp.badge.status">Status</span>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="lastModifiedDate">
+              <div class="text-center">
+                <span jhiTranslate="gimnasio-uiApp.badge.lastModifiedDate">last Modified Date</span>
+              </div>
+            </th>
+            <th class="text-center"><span jhiTranslate="entity.action.title"></span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let badge of FiltredBadges; index as i; trackBy: trackId" data-cy="entityTable">
+            <td>
+              <a [routerLink]="['/admin/gym', idgym, 'badge', badge.id, 'view']">{{ badge.id }}</a>
+            </td>
+            <td class="text-center">{{ badge.uid }}</td>
+            <td class="text-center">
+              <span class="badge" [ngClass]="getBadgeClass(badge.status!)" jhiTranslate="{{ 'gimnasio-uiApp.STATUS.' + badge.status }}">
+                {{ badge.status }}</span
+              >
+            </td>
+            <td class="text-center">
+              {{ badge.lastModifiedDate | date: 'medium' }}
+            </td>
+
+            <td class="text-center">
+              <div class="btn-group btn-group-sm" dropdown placement="bottom right" container="body">
+                <button class="btn btn-sm px-2 py-0 dropdown-toggle no-caret btn-neutral-first" dropdownToggle type="button">
+                  <fa-icon class="font-size-lg" [icon]="['fas', 'ellipsis']" ngbTooltip="Actions"></fa-icon>
+                </button>
+                <div *dropdownMenu class="dropdown-menu dropdown-menu-xl p-0 dropdown-menu-right">
+                  <ul class="nav nav-neutral-first nav-pills flex-column pt-2 pb-3">
+                    <li class="nav-item nav-item--header px-3">
+                      <span class="text-capitalize text-black font-size-md font-weight-bold">
+                        <span jhiTranslate="entity.action.title"></span>
+                      </span>
+                    </li>
+                    <li class="dropdown-divider"></li>
+                    <li class="nav-item px-3">
+                      <a [routerLink]="['/admin/gym', idgym, 'badge', badge.id, 'view']" class="nav-link active">
+                        <span jhiTranslate="entity.action.view"></span>
+                        <div class="ml-auto badge badge-first">New</div>
+                      </a>
+                    </li>
+                    <li class="dropdown-divider"></li>
+                  </ul>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="divider"></div>
+    <div *ngIf="badges && badges.length > 0" class="p-4">
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center mb-3">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-offcanvas>
+  <div class="offcanvas-header p-4">
+    <button
+      (click)="offcanvas.dismiss('Cross click')"
+      class="close-drawer-btn btn-sm"
+      placement="left"
+      ngbTooltip="Close drawer"
+      type="button"
+    >
+      <div class="navbar-toggler hamburger hamburger--elastic is-active">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </div>
+    </button>
+    <div class="divider"></div>
+    <div class="divider mb-4"></div>
+  </div>
+  <div class="offcanvas-body p-4">
+    <!-- Body for the offcanvas(sidebar) start Here  -->
+
+    <div>
+      <ngb-alert #selfClosingAlert *ngIf="successMessage" type="success" (closed)="successMessage = ''">{{ successMessage }} </ngb-alert>
+    </div>
+    <div *ngIf="badgeToUpdate">
+      <div class="card card-box mb-5">
+        <div class="card-header">
+          <h4 class="font-size-lg mb-0 py-2 font-weight-bold">Add Packs</h4>
+        </div>
+        <div class="card-body">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex">
+              <div>
+                <b>Badge</b>
+                <div class="text-black-50" *ngIf="badgeToUpdate.uid">{{ badgeToUpdate.uid }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="divider my-3"></div>
+          <div class="d-flex align-items-center justify-content-between">
+            <div>
+              <div>
+                <b>Activate a Pack</b>
+                <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+                  <div class="mb-3">
+                    <select
+                      class="form-control"
+                      id="field_packId"
+                      data-cy="packId"
+                      name="packId"
+                      formControlName="packId"
+                      [compareWith]="comparePack"
+                    >
+                      <option [ngValue]="null"></option>
+                      <option [ngValue]="packOption" *ngFor="let packOption of packsSharedCollection">{{ packOption.name }}</option>
+                    </select>
+                  </div>
+
+                  <div class="align-box-row mt-3">
+                    <div class="ml-1">
+                      <div class="d-flex align-items-center justify-content-between">
+                        <button
+                          type="button"
+                          id="cancel-save"
+                          data-cy="entityCreateCancelButton"
+                          class="btn btn-secondary"
+                          (click)="offcanvas.dismiss('Cross click')"
+                        >
+                          <span jhiTranslate="entity.action.cancel">Cancel</span>
+                        </button>
+
+                        <button
+                          type="submit"
+                          id="save-entity"
+                          data-cy="entityCreateSaveButton"
+                          [disabled]="editForm.invalid || isSaving"
+                          class="btn btn-primary"
+                        >
+                          <span jhiTranslate="entity.action.save">Save</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

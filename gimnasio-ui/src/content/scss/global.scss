@@ -1,0 +1,181 @@
+// Core
+
+@import 'core';
+
+// Fonts
+
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,700');
+
+// Widgets
+
+@import 'widgets';
+
+// Components
+
+@import 'components';
+
+// Layout Components
+
+@import 'layout-components';
+
+// Layout Blueprints
+
+@import 'layout-blueprints';
+
+.offcanvas.offcanvas-end {
+  top: 74px;
+  width: 50vh;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.view-details {
+  color: #3b3e66;
+  background-color: rgb(209 209 209 / 13%);
+}
+
+.close-drawer-btn {
+  transition: all 0.2s ease-in-out;
+  position: absolute;
+  left: -19px;
+  width: 38px;
+  height: 38px;
+  margin: 0;
+  top: 19px;
+  padding: 0;
+  border: 0;
+  background: #fff;
+  color: #fff;
+  box-shadow: 0 0.313rem 0.8rem rgb(122 123 151 / 50%), 0 0.126rem 0.225rem rgb(122 123 151 / 30%);
+  z-index: 1155;
+  border-radius: 100%;
+  opacity: 1;
+  visibility: visible;
+  border-radius: 100%;
+}
+
+.menuScroll::-webkit-scrollbar {
+  top: 0 !important;
+  right: 0 !important;
+  left: auto !important;
+  width: 10px;
+  cursor: default;
+  color: rgba(7, 9, 25, 0.4) !important;
+  height: 49px;
+  transition: width 200ms linear, opacity 200ms linear, background-color 200ms linear;
+}
+
+/* Track */
+.menuScroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(7, 9, 25, 0.4) !important;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* Handle */
+.menuScroll::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  background-color: inset 0 0 6px rgba(7, 9, 25, 0.4) !important;
+  border-radius: 1px !important;
+  width: 6px;
+  right: 2px;
+  position: absolute;
+  -webkit-box-shadow: inset 0 0 6px rgba(7, 9, 25, 0.4) !important;
+}
+
+.menuScroll::-webkit-scrollbar-thumb:window-inactive {
+  background-color: rgba($black, 0.4) !important;
+  width: 11px;
+}
+
+/*   .form-edit{
+    background: #f9f9f900 !important;
+    border: 0px solid #d1d2db !important;
+  } */
+
+/*   .ngx-slider .ngx-slider-pointer{
+    border: 2px solid #3c44b1 !important;
+    border-radius: 100% !important;
+    top: -6px !important;
+    background: #fff !important;
+    width: 16px !important;
+    height: 16px !important;
+    transition: box-shadow 200ms;
+}
+
+.ngx-slider .ngx-slider-pointer.ngx-slider-active{
+  z-index: 4 !important;
+}
+
+
+
+.ngx-slider-pointer {
+
+  &:after {
+    position: absolute;
+    background: none !important;
+  }
+
+  &:hover:after {
+    background-color: none !important;
+  }} */
+
+.nav-content {
+  min-height: 70vh;
+}
+
+/* .my-custom-class .tooltip-inner {
+  background-color: #F5F5F5;
+  color:#3C486B;
+  font-size: 125%;
+}
+.my-custom-class.bs-tooltip-end .tooltip-arrow::before {
+  border-right-color: #F5F5F5;
+}
+.my-custom-class.bs-tooltip-start .tooltip-arrow::before {
+  border-left-color: #F5F5F5;
+}
+.my-custom-class.bs-tooltip-top .tooltip-arrow::before {
+  border-top-color: #F5F5F5;
+}
+.my-custom-class.bs-tooltip-bottom .tooltip-arrow::before {
+  border-bottom-color: #F5F5F5;
+} */
+
+.my-custom-class .tooltip-inner {
+  background-color: darkgreen;
+  font-size: 125%;
+}
+.my-custom-class.bs-tooltip-end .tooltip-arrow::before {
+  border-right-color: darkgreen;
+}
+.my-custom-class.bs-tooltip-start .tooltip-arrow::before {
+  border-left-color: darkgreen;
+}
+.my-custom-class.bs-tooltip-top .tooltip-arrow::before {
+  border-top-color: darkgreen;
+}
+.my-custom-class.bs-tooltip-bottom .tooltip-arrow::before {
+  border-bottom-color: darkgreen;
+}
+
+@media (max-width: 920px) {
+  .app-page-title--description {
+    display: none;
+  }
+  .custom-nav {
+    position: relative;
+    right: 0;
+  }
+  .app-page-title--heading h4 {
+    display: block;
+    padding: 7px;
+    margin: 11px;
+    margin-top: 28px;
+  }
+
+  #btnLogin {
+    margin: auto !important;
+  }
+  /* angular-cli file: src/styles.css */
+  @import '../node_modules/angular-calendar/css/angular-calendar.css';
+}

@@ -1,0 +1,171 @@
+<div class="px-1 py-2">
+  <div class="justify-content-around card card-box p-2 mb-5 mt-4">
+  <div class="app-inner-content-layout--main bg-white p-0 card-box">
+    <div>
+      <div class="p-4">
+        <div class="rounded-sm bg-secondary mb-4 p-3">
+          <div class="row">
+            <div class="col-md-4 text-center text-lg-left">
+              <div class="btn-group btn-group-sm">
+                <div
+                  [(viewDate)]="viewDate"
+                  [view]="view"
+                  class="btn btn-outline-primary"
+                  [excludeDays]="excludeDays"
+                  mwlCalendarPreviousView
+                >
+                  <fa-icon [icon]="['fas', 'angle-left']"></fa-icon>
+                </div>
+                <div [(viewDate)]="viewDate" class="btn d-flex align-items-center btn-primary" mwlCalendarToday>
+                  <span class="btn-wrapper--label" jhiTranslate="gimnasio-uiApp.calendar.today">Today</span>
+                </div>
+                <div [(viewDate)]="viewDate" [view]="view" class="btn btn-outline-primary" [excludeDays]="excludeDays" mwlCalendarNextView>
+                  <fa-icon [icon]="['fas', 'angle-right']"></fa-icon>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 d-flex text-center justify-content-center align-items-center py-3 py-lg-0">
+              <h3 class="font-weight-bold font-size-lg mb-0">{{ viewDate | calendarDate: view + 'ViewTitle': locale }}</h3>
+            </div>
+            <div class="col-md-4 text-center text-lg-right">
+              <div class="btn-group btn-group-sm">
+                <div (click)="setView(CalendarView.Month)" [class.active]="view === CalendarView.Month" class="btn btn-primary" jhiTranslate="gimnasio-uiApp.calendar.month">Month</div>
+                <div (click)="setView(CalendarView.Week)" [class.active]="view === CalendarView.Week" class="btn btn-primary" jhiTranslate="gimnasio-uiApp.calendar.week">Week</div>
+                <div (click)="setView(CalendarView.Day)" [class.active]="view === CalendarView.Day" class="btn btn-primary" jhiTranslate="gimnasio-uiApp.calendar.day">Day</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div [ngSwitch]="view">
+          <mwl-calendar-month-view
+            *ngSwitchCase="'month'"
+            [events]="events"
+            [viewDate]="viewDate"
+            [refresh]="refresh"
+            (eventTimesChanged)="eventTimesChanged($event)"
+            [activeDayIsOpen]="activeDayIsOpen"
+            [excludeDays]="excludeDays"
+            (eventClicked)="eventClicked(content, $event)"
+            (dayClicked)="dayClicked($event.day)"
+            [locale]="locale"
+          >
+          </mwl-calendar-month-view>
+          <mwl-calendar-week-view
+            *ngSwitchCase="'week'"
+            [events]="events"
+            [viewDate]="viewDate"
+            [refresh]="refresh"
+            (eventTimesChanged)="eventTimesChanged($event)"
+            (hourSegmentClicked)="hourSegmentClicked((clickedDate = $event.date))"
+            [hourDuration]="hourDuration"
+            [excludeDays]="excludeDays"
+            [dayStartHour]="dayStartHour"
+            [dayEndHour]="dayEndHour"
+            (eventClicked)="eventClicked(content, $event)"
+            [locale]="locale"
+          >
+          </mwl-calendar-week-view>
+          <mwl-calendar-day-view
+            *ngSwitchCase="'day'"
+            [events]="events"
+            [viewDate]="viewDate"
+            [hourDuration]="hourDuration"
+            [hourSegments]="hourSegments"
+            [refresh]="refresh"
+            [dayStartHour]="dayStartHour"
+            [dayEndHour]="dayEndHour"
+            (eventTimesChanged)="eventTimesChanged($event)"
+            (hourSegmentClicked)="hourSegmentClicked((clickedDate = $event.date))"
+            (eventClicked)="eventClicked(content, $event)"
+            [locale]="locale"
+          >
+          </mwl-calendar-day-view>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    (click)="toggleMobileSidebar = !toggleMobileSidebar"
+    [ngClass]="{ active: toggleMobileSidebar }"
+    class="sidebar-inner-layout-overlay"
+  ></div>
+</div>
+
+<ng-template #content let-offcanvas>
+  <div class="offcanvas-header p-4">
+    <button
+      (click)="offcanvas.dismiss('Cross click')"
+      class="close-drawer-btn btn-sm"
+      placement="left"
+      ngbTooltip="Close drawer"
+      type="button"
+    >
+      <div class="navbar-toggler hamburger hamburger--elastic is-active">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </div>
+    </button>
+    <div class="divider"></div>
+    <div class="divider mb-4"></div>
+  </div>
+  <div class="offcanvas-body p-4">
+    <!-- Body for the offcanvas(sidebar) start Here  -->
+    <div *ngIf="dataToShow">
+      <div class="card card-box mb-5">
+        <div class="card-header">
+          <h5 class="font-size-lg mb-0 py-2 mr-3">Visit At</h5>
+          <div>
+            <span class="text-black-50">{{ dataToShow.fromDate | date: 'longDate' }}</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex align-items-center">
+            <dl class="col-12">
+              <dt><span>Pack name</span></dt>
+              <dd class="alert view-details">
+                <span>{{ dataToShow.packName }}</span>
+              </dd>
+
+              <div class="divider my-3"></div>
+              <dt><span>User</span></dt>
+              <dd class="alert view-details">
+                <span>{{ dataToShow.profileEmail }}</span>
+              </dd>
+
+              <div class="divider my-3"></div>
+              <dt><span>Badge ID</span></dt>
+              <dd class="alert view-details">
+                <span>{{ dataToShow.badgeId }}</span>
+              </dd>
+
+              <div class="divider my-3"></div>
+              <dt><span>Starts At</span></dt>
+              <dd class="alert view-details">
+                <span>{{ dataToShow.fromDate | date: 'shortTime' }}</span>
+              </dd>
+              <div class="divider my-3"></div>
+              <dt><span>Ends at</span></dt>
+              <dd class="alert view-details">
+                <span>{{ dataToShow.toDate | date: 'shortTime' }}</span>
+              </dd>
+            </dl>
+          </div>
+        </div>
+        <div class="card-footer p-4">
+          <div class="align-box-row mt-3">
+            <div class="ml-auto">
+              <button type="button" (click)="cancelVisit(dataToShow)" class="btn btn-danger">
+                <span jhiTranslate="entity.action.cancel">Cancel Visit</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<notifier-container></notifier-container>
+</div>

@@ -1,0 +1,34 @@
+<div *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_USER', 'ROLE_BADGE']">
+  <div
+    class="app-header"
+    [ngClass]="{
+      'app-header--shadow': globals.headerShadow,
+      'app-header--opacity-bg': globals.headerTransparentBg
+    }"
+  >
+    <div class="app-header--pane">
+      <button
+        [ngClass]="{ 'is-active': globals.toggleSidebarMobile }"
+        class="navbar-toggler hamburger hamburger--elastic toggle-mobile-sidebar-btn"
+        (click)="toggleSidebarMobileOpen()"
+        type="button"
+      >
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+      <jhi-page-title titleHeading="{{ titleHeading }}" titleDescription="{{ titleDescription }}"></jhi-page-title>
+    </div>
+    <div class="app-header--pane">
+      <jhi-header-dots [hidden]="hide" gymName="{{ gymName }}" class="mx-5"></jhi-header-dots>
+      <div *ngIf="account != null">
+        <jhi-header-userbox
+          Login="{{ account.login }}"
+          Email="{{ account.email }}"
+          accStatus="{{ account.activated }}"
+        ></jhi-header-userbox>
+      </div>
+      <jhi-header-drawer></jhi-header-drawer>
+    </div>
+  </div>
+</div>

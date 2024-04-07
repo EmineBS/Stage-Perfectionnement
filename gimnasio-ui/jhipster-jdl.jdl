@@ -1,0 +1,23 @@
+entity Blockchain {
+	name String
+    currency String
+    symbol String
+}
+
+entity Address {
+	value String
+}
+
+relationship ManyToOne {
+	Address{blockchain} to Blockchain,
+}
+
+// Set pagination options
+paginate Blockchain, Address with infinite-scroll
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+angularSuffix * with alp_

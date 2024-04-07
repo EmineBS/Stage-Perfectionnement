@@ -1,0 +1,84 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-visit-heading" data-cy="VisitCreateUpdateHeading" jhiTranslate="gimnasioApp.visit.home.createOrEditLabel">
+        Create or edit a Visit
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="gimnasioApp.visit.fromDate"
+            for="field_fromDate"
+            [ngbTooltip]="'gimnasioApp.visit.help.fromDate' | translate"
+            >From Date</label
+          >
+          <input type="text" class="form-control" name="fromDate" id="field_fromDate" data-cy="fromDate" formControlName="fromDate" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gimnasioApp.visit.toDate" for="field_toDate">To Date</label>
+          <input type="text" class="form-control" name="toDate" id="field_toDate" data-cy="toDate" formControlName="toDate" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gimnasioApp.visit.enabled" for="field_enabled">Enabled</label>
+          <input type="text" class="form-control" name="enabled" id="field_enabled" data-cy="enabled" formControlName="enabled" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gimnasioApp.visit.status" for="field_status">Status</label>
+          <input type="checkbox" class="form-check" name="status" id="field_status" data-cy="status" formControlName="status" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gimnasioApp.visit.calendarId" for="field_calendarId">Calendar Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="calendarId"
+            id="field_calendarId"
+            data-cy="calendarId"
+            formControlName="calendarId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gimnasioApp.visit.relBadgePackId" for="field_relBadgePackId">Rel Badge Pack Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="relBadgePackId"
+            id="field_relBadgePackId"
+            data-cy="relBadgePackId"
+            formControlName="relBadgePackId"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

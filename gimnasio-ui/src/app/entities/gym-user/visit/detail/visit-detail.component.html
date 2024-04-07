@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="visit">
+      <h2 data-cy="visitDetailsHeading"><span jhiTranslate="gimnasioApp.visit.detail.title">Visit</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ visit.id }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="gimnasioApp.visit.fromDate" [ngbTooltip]="'gimnasioApp.visit.help.fromDate' | translate">From Date</span>
+        </dt>
+        <dd>
+          <span>{{ visit.fromDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="gimnasioApp.visit.toDate">To Date</span></dt>
+        <dd>
+          <span>{{ visit.toDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="gimnasioApp.visit.enabled">Enabled</span></dt>
+        <dd>
+          <span>{{ visit.enabled }}</span>
+        </dd>
+        <dt><span jhiTranslate="gimnasioApp.visit.status">Status</span></dt>
+        <dd>
+          <span>{{ visit.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="gimnasioApp.visit.calendarId">Calendar Id</span></dt>
+        <dd>
+          <span>{{ visit.calendarId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gimnasioApp.visit.relBadgePackId">Rel Badge Pack Id</span></dt>
+        <dd>
+          <span>{{ visit.relBadgePackId }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/visit', visit.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

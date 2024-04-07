@@ -1,0 +1,25 @@
+{
+  "gimnasio-uiApp": {
+    "progress": {
+      "home": {
+        "title": "Progess",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Progress",
+        "createOrEditLabel": "Create or edit a Progress",
+        "notFound": "No Calendars found"
+      },
+      "created": "A new Progress is created with identifier {{ param }}",
+      "updated": "A Progress is updated with identifier {{ param }}",
+      "deleted": "A Progress is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Progress {{ id }}?"
+      },
+      "detail": {
+        "title": "Progress"
+      },
+      "id": "ID",
+      "gymId": "Gym Id",
+      "gym": "Gym"
+    }
+  }
+}

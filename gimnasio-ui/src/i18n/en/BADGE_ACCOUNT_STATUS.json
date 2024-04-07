@@ -1,0 +1,9 @@
+{
+  "gimnasio-uiApp": {
+    "BADGE_ACCOUNT_STATUS": {
+      "null": "",
+      "ASSIGNED": "ASSIGNED",
+      "NOTASSIGNED": "NOT ASSIGNED"
+    }
+  }
+}

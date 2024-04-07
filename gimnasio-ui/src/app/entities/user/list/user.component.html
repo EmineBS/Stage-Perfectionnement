@@ -1,0 +1,100 @@
+<div class="px-1 py-2">
+  <div class="alert alert-warning" id="no-result" *ngIf="users?.length === 0 && !isLoading">
+    <span jhiTranslate="userManagement.notFound">No users found</span>
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+  </div>
+  <div class="card card-box p-2 mb-5 mt-4">
+    <div class="table-responsive">
+      <table class="table table-striped text-nowrap table-bordered table-hover mb-0" *ngIf="users && users.length > 0">
+        <thead class="thead-light">
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="name">
+              <div class="text-center">
+                <span jhiTranslate="userManagement.login">Login</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="description">
+              <div class="text-center">
+                <span jhiTranslate="userManagement.email">Email</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th class="text-center"><span jhiTranslate="entity.action.title"></span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; index as i; trackBy: trackId" data-cy="entityTable">
+            <td>
+              <a [routerLink]="['/user', user.id, 'view']">{{ user.id }}</a>
+            </td>
+            <td class="text-center">{{ user.login }}</td>
+            <td class="text-center">
+              <span> {{ user.email }}</span>
+            </td>
+
+            <td class="text-center">
+              <div class="btn-group btn-group-sm" dropdown placement="bottom right" container="body">
+                <button class="btn btn-sm px-2 py-0 dropdown-toggle no-caret btn-neutral-first" dropdownToggle type="button">
+                  <fa-icon class="font-size-lg" [icon]="['fas', 'ellipsis']" ngbTooltip="Actions"></fa-icon>
+                </button>
+                <div *dropdownMenu class="dropdown-menu dropdown-menu-xl p-0 dropdown-menu-right">
+                  <ul class="nav nav-neutral-first nav-pills flex-column pt-2 pb-3">
+                    <li class="nav-item nav-item--header px-3">
+                      <span class="text-capitalize text-black font-size-md font-weight-bold">
+                        <span jhiTranslate="entity.action.title"></span>
+                      </span>
+                    </li>
+                    <li class="dropdown-divider"></li>
+                    <li class="nav-item px-3">
+                      <a [routerLink]="['/admin/user', user.id, 'view']" class="nav-link active">
+                        <span jhiTranslate="entity.action.view"></span>
+                        <div class="ml-auto user user-first">New</div>
+                      </a>
+                    </li>
+                    <li class="dropdown-divider"></li>
+                    <li *jhiHasAnyAuthority="'ROLE_ADMIN'" class="nav-item">
+                      <a (click)="delete(user)" class="nav-link text-danger mx-3">
+                        <div class="nav-link-icon">
+                          <fa-icon [icon]="['fas', 'times']"></fa-icon>
+                        </div>
+                        <span jhiTranslate="entity.action.delete"></span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="divider"></div>
+    <div *ngIf="users && users.length > 0">
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  </div>
+</div>
+<notifier-container></notifier-container>

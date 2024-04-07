@@ -1,0 +1,73 @@
+<div customClass="px-1 py-2 ">
+  <div class="mt-2 py-2 row justify-content-center">
+    <div class="card card-box col-xl-6">
+      <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+        <div class="card-header">
+          <div class="card-header--title">
+            <h5 id="jhi-user-heading" class="card-header--title font-weight-bold py-2" data-cy="userCreateUpdateHeading">
+              <span *ngIf="editForm.controls.id.value === null">Add a user</span>
+            </h5>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <jhi-alert-error></jhi-alert-error>
+
+          <div class="row mb-3">
+            <label class="form-label" jhiTranslate="userManagement.login" for="field_login">Login</label>
+            <input type="text" class="form-control" name="login" id="field_login" data-cy="login" formControlName="login" />
+          </div>
+
+          <div class="row mb-3">
+            <label class="form-label" jhiTranslate="userManagement.email" for="field_email">Email</label>
+            <input
+              type="text"
+              class="form-control"
+              name="email"
+              id="field_email"
+              data-cy="email"
+              formControlName="email"
+            />
+          </div>
+          <div class="row mb-3">
+            <label class="form-label" jhiTranslate="userManagement.password" for="field_password">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              id="field_password"
+              data-cy="password"
+              formControlName="password"
+            />
+          </div>
+        </div>
+
+        <div class="card-footer bg-light p-4 row">
+          <div class="align-box-row mt-3">
+            <div class="ml-auto">
+              <!-- <button
+                type="button"
+                id="cancel-save"
+                data-cy="entityCreateCancelButton"
+                class="btn btn-neutral-first"
+                (click)="previousState()"
+              >
+                <span jhiTranslate="entity.action.cancel">Cancel</span>
+              </button> -->
+
+              <button
+                type="submit"
+                id="save-entity"
+                data-cy="entityCreateSaveButton"
+                [disabled]="editForm.invalid || isSaving"
+                class="btn btn-primary"
+              >
+                <span jhiTranslate="entity.action.save">Save</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

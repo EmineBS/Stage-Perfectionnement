@@ -1,0 +1,28 @@
+{
+  "gimnasio-uiApp": {
+    "feature": {
+      "home": {
+        "title": "Feature",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Feature",
+        "createOrEditLabel": "Create or edit a Feature",
+        "notFound": "No Features found"
+      },
+      "created": "A new Feature is created with identifier {{ param }}",
+      "updated": "A Feature is updated with identifier {{ param }}",
+      "deleted": "A Feature is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Feature {{ id }}?"
+      },
+      "detail": {
+        "title": "Feature"
+      },
+      "id": "ID",
+      "name": "Name",
+      "description": "Description",
+      "enabled": "Enabled",
+      "price": "Price",
+      "addFeature": "Add Feature"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "gimnasio-uiApp": {
+    "visit": {
+      "title": "Titre",
+      "startsAt": "Commence à",
+      "endsAt": "Fini à",
+      "saveRDV": "Sauvegarder le rendez-vous",
+      "rdvDate": "Date de rendez-vous"
+    }
+  }
+}

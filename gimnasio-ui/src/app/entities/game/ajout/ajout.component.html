@@ -1,0 +1,23 @@
+<div class="d-flex">
+    <div class="col-12">
+        <div>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd class="alert view-details">
+                    <input type="text" [(ngModel)]="game.gameName" class="form-control form-edit"/>
+                </dd>
+                <dt><span>Style</span></dt>
+                <dd class="alert view-details">
+                    <input type="text" [(ngModel)]="game.style" class="form-control form-edit"/>
+                </dd>
+                <div class="card-footer p-2">
+                    <div class="align-box-row m-1">
+                        <button type="button" (click)="submit()" class="btn btn-primary">
+                            <span>Add</span>
+                        </button>
+                    </div>
+                </div>
+            </dl>
+        </div>
+    </div>
+</div>

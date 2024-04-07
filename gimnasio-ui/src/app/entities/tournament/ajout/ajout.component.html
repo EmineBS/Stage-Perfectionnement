@@ -1,0 +1,43 @@
+<div class="d-flex">
+    <div class="col-12">
+        <div>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd class="alert view-details">
+                    <input type="text" [(ngModel)]="tournament.name" class="form-control form-edit"/>
+                <dt><span>Registration</span></dt>
+                <dd class="alert view-details">
+                    <select class="form-control" [(ngModel)]="tournament.registration">
+                        <option [ngValue]="false">Close</option>
+                        <option [ngValue]="true">Open</option>
+                    </select>
+                </dd>
+                <dt><span>Start Time</span></dt>
+                <dd class="alert view-details">
+                    <input type="datetime-local" [(ngModel)]="startTimeDate" (change)="onStartTimeChange()" class="form-control form-edit"/>
+                </dd>
+                <dt><span>Min Players</span></dt>
+                <dd class="alert view-details">
+                    <input type="text" [(ngModel)]="tournament.minplayers" class="form-control form-edit"/>
+                </dd>
+                <dt><span>Max Players</span></dt>
+                <dd class="alert view-details">
+                    <input type="text" [(ngModel)]="tournament.maxplayers" class="form-control form-edit"/>
+                </dd>
+                <dt><span>Game</span></dt>
+                <dd class="alert view-details">
+                    <select class="form-control" [(ngModel)]="tournament.gameId">
+                        <option *ngFor="let game of games" [ngValue]="game.id">{{game.gameName}}</option>
+                    </select>
+                </dd>
+                <div class="card-footer p-2">
+                    <div class="align-box-row m-1">
+                        <button type="button" (click)="submit()" class="btn btn-primary">
+                            <span>Add</span>
+                        </button>
+                    </div>
+                </div>
+            </dl>
+        </div>
+    </div>
+</div>

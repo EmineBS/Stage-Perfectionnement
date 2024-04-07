@@ -1,0 +1,28 @@
+<div class="app-sidebar--header">
+  <div class="nav-logo ml-3">
+    <a routerLink="" title="{{ gymName }}">
+      <div>
+        <span class="text-uppercase ml-2">{{ gymName }}</span>
+      </div>
+    </a>
+  </div>
+  <button
+    (click)="toggleSidebarMobileOpen()"
+    [ngClass]="{ 'is-active': globals.toggleSidebarMobile }"
+    class="navbar-toggler hamburger hamburger--elastic toggle-mobile-sidebar-btn"
+    type="button"
+  >
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+  </button>
+  <button
+    (click)="toggleSidebarCollapse()"
+    class="expand-sidebar-btn btn btn-sm"
+    placement="right"
+    ngbTooltip="Expand sidebar"
+    type="button"
+  >
+    <fa-icon [icon]="['fas', 'arrows-alt-h']"></fa-icon>
+  </button>
+</div>

@@ -1,0 +1,123 @@
+<div customClass="px-1 py-2">
+  
+    <div class="row mt-2 py-2">
+        <div class="col-xl-6" *ngFor="let tournament of tournaments">
+          <div class="card card-box mb-5">
+            <div class="p-4" >
+              <div *ngIf="role==='indie'" class="btn-group card-tr-actions btn-group-sm" ngbDropdown>
+                <button
+                  class="btn btn-link btn-link-primary p-0 font-size-xl text-dark dropdown-toggle no-caret"
+                  ngbDropdownToggle
+                  type="button"
+                >
+                  <fa-icon [icon]="['fas', 'ellipsis-h']" class="font-size-lg"></fa-icon>
+                </button>
+                <div ngbDropdownMenu class="dropdown-menu dropdown-menu-lg-start dropdown-menu-lg p-0">
+                  <ul class="nav nav-neutral-first nav-pills flex-column pt-2 pb-3">
+                    <li class="nav-item nav-item--header px-3">
+                      <span class="text-capitalize text-black font-size-md font-weight-bold">
+                        <span jhiTranslate="entity.action.title"></span>
+                      </span>
+                    </li>
+                    <li class="dropdown-divider"></li>
+                    <li class="nav-item px-3">
+                      <a [routerLink]="['/tournament']" class="nav-link active">
+                        <span jhiTranslate="entity.action.view"></span>
+                        <div class="ml-auto badge badge-first">New</div>
+                      </a>
+                    </li>
+                    <li class="dropdown-divider"></li>
+                    <li class="nav-item">
+                      <a (click)="Close(tournament)" *ngIf="tournament.registration===true" class="nav-link text-danger mx-3">
+                        <div class="nav-link-icon">
+                          <fa-icon [icon]="['fas', 'times']"></fa-icon>
+                        </div>
+                        <span>Close</span>
+                      </a>
+                    </li>
+                    <li (click)="Delete(tournament.id)" *ngIf="tournament.registration===false" class="nav-item">
+                      <a class="nav-link text-danger mx-3">
+                        <div class="nav-link-icon">
+                          <fa-icon [icon]="['fas', 'times']"></fa-icon>
+                        </div>
+                        <span>Delete</span>
+                      </a>
+                    </li>
+    
+                    <li (click)="Activate(tournament)" *ngIf="tournament.registration===false" class="nav-item">
+                      <a class="nav-link text-success mx-3">
+                        <div class="nav-link-icon">
+                          <fa-icon [icon]="['fas', 'check']"></fa-icon>
+                        </div>
+                        <span>Activate</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+    
+              <div class="d-flex align-items-center mb-3">
+                <div class="w-100">
+                  <a [routerLink]="['/tournament']" class="font-weight-bold font-size-lg" title="Tournament Name">{{ tournament.name }}</a>
+                </div>
+              </div>
+              <div class="dprogress-bar-rounded progress-xs progress-animated-alt progress"></div>
+              <div class="my-4 font-size-sm">
+                <div class="d-flex justify-content-between">
+                  <p class="text-black-50 font-size-md mb-0"> Region<br /></p>
+                  <p class="text-black-50 font-size-md mb-0 ms-auto">Players: {{ tournament.minplayers }}-{{ tournament.maxplayers }}<br /></p>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between text-center line-height-sm font-size-lg text-black-50 my-4 p-4">
+                  <div>
+                      <div class="text-second font-weight-bold">
+                      {{ getGameName(tournament.gameId) }}
+                      </div>
+                      <small>Game</small>
+                  </div>
+                  <div>
+                      <div class="text-second font-weight-bold">
+                      {{ convertTimestampToDateString(tournament.starttimestamp) }}
+                      </div>
+                      <small>Starting Time</small>
+                  </div>
+                  <div>
+                      <div class="text-second font-weight-bold">
+                      {{ registration(tournament.registration) }}
+                      </div>
+                      <small>Registration</small>
+                  </div>
+              </div>
+            </div>
+            <div *ngIf="role==='player'" class="card-footer p-2 d-flex justify-content-center">
+              <div class="align-box-row m-1 text-center">
+                  <button type="button" (click)="submit(tournament)" class="btn btn-primary">
+                      <span>Join</span>
+                  </button>
+              </div>
+            </div>
+            <div *ngIf="role==='indie'" class="card-footer bg-light p-4 text-center" [ngSwitch]="tournament.registration">
+              <span *ngSwitchCase="false" class="btn btn-danger">Close</span>
+              <span *ngSwitchCase="true" class="btn btn-success">Open</span>
+            </div>
+          </div>
+        </div>
+        <!--<div *ngIf="gyms && gyms.length > 0">
+          <div class="divider"></div>
+    
+          <div class="p-3 mt-4 bg-secondary rounded d-flex justify-content-center">
+            <ngb-pagination
+              [collectionSize]="totalItems"
+              [page]="page"
+              [pageSize]="itemsPerPage"
+              [maxSize]="5"
+              [rotate]="true"
+              [boundaryLinks]="true"
+              (pageChange)="navigateToPage($tournament)"
+            ></ngb-pagination>
+          </div>
+        </div>-->
+        <div *ngIf="activeGame===null && role==='indie'"><p>No Game Selected!</p></div>
+    </div>
+  </div>
+  

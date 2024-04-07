@@ -1,0 +1,189 @@
+<div class="d-flex">
+  <div class="col-12">
+    <div>
+      <form novalidate (ngSubmit)="confirm()" [formGroup]="editForm">
+        <div *ngIf="gym">
+          <div class="col-12">
+            <div>
+              <div>
+                <jhi-alert-error></jhi-alert-error>
+                <jhi-alert></jhi-alert>
+
+                <dl class="row-md jh-entity-details">
+                  <dt><span jhiTranslate="gimnasio-uiApp.gym.name">Name</span></dt>
+                  <dd class="alert view-details" *ngIf="!edit">
+                    <span>{{ gym.name }}</span>
+                  </dd>
+                  <dd class="alert view-details" *ngIf="edit">
+                    <input
+                      *ngIf="gym.name"
+                      class="form-control form-edit"
+                      name="name"
+                      id="field_name"
+                      data-cy="name"
+                      formControlName="name"
+                      value="{{ gym.name }}"
+                    />
+                    <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+                      <small
+                        class="form-text text-danger"
+                        *ngIf="editForm.get('name')?.errors?.required"
+                        jhiTranslate="entity.validation.required"
+                      >
+                        This field is required.
+                      </small>
+                    </div>
+                  </dd>
+                  <dt><span jhiTranslate="gimnasio-uiApp.gym.description">Description</span></dt>
+                  <dd class="alert view-details">
+                    <span *ngIf="!edit">{{ gym.description }}</span>
+                    <textarea
+                      *ngIf="edit"
+                      type="text"
+                      class="form-control"
+                      name="description"
+                      id="field_description"
+                      data-cy="description"
+                      formControlName="description"
+                    ></textarea>
+                    <div
+                      *ngIf="
+                        editForm.get('description')!.invalid && (editForm.get('description')!.dirty || editForm.get('description')!.touched)
+                      "
+                    >
+                      <small
+                        class="form-text text-danger"
+                        *ngIf="editForm.get('description')?.errors?.required"
+                        jhiTranslate="entity.validation.required"
+                      >
+                        This field is required.
+                      </small>
+                    </div>
+                  </dd>
+
+                  <dt><span jhiTranslate="gimnasio-uiApp.gym.registrationNumber">registration Number</span></dt>
+                  <dd class="alert view-details">
+                    <span *ngIf="!edit">{{ gym.registrationNumber }}</span>
+                    <input
+                      *ngIf="gym.registrationNumber && edit"
+                      class="form-control form-edit"
+                      name="registrationNumber"
+                      id="field_registrationNumber"
+                      data-cy="registrationNumber"
+                      formControlName="registrationNumber"
+                      value="{{ gym.registrationNumber }}"
+                    />
+                    <div
+                      *ngIf="
+                        editForm.get('registrationNumber')!.invalid &&
+                        (editForm.get('registrationNumber')!.dirty || editForm.get('registrationNumber')!.touched)
+                      "
+                    >
+                      <small
+                        class="form-text text-danger"
+                        *ngIf="editForm.get('registrationNumber')?.errors?.required"
+                        jhiTranslate="entity.validation.required"
+                      >
+                        This field is required.
+                      </small>
+                    </div>
+                  </dd>
+                  <dt><span jhiTranslate="gimnasio-uiApp.gym.location">Location</span></dt>
+                  <dd class="alert view-details">
+                    <span *ngIf="!edit">{{ gym.location }}</span>
+                    <input
+                      *ngIf="gym.location && edit"
+                      class="form-control form-edit"
+                      name="location"
+                      id="field_location"
+                      data-cy="location"
+                      formControlName="location"
+                      value="{{ gym.location }}"
+                    />
+                  </dd>
+                  <dt><span jhiTranslate="gimnasio-uiApp.gym.email">Email</span></dt>
+                  <dd class="alert view-details">
+                    <span *ngIf="!edit">{{ gym.email }}</span>
+                    <input
+                      *ngIf="gym.email && edit"
+                      class="form-control form-edit"
+                      name="email"
+                      id="field_email"
+                      data-cy="email"
+                      formControlName="email"
+                      value="{{ gym.email }}"
+                    />
+                    <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
+                      <small
+                        class="form-text text-danger"
+                        *ngIf="editForm.get('email')?.errors?.required"
+                        jhiTranslate="entity.validation.required"
+                      >
+                        This field is required.
+                      </small>
+                    </div>
+                  </dd>
+                  <dt><span jhiTranslate="gimnasio-uiApp.gym.badgeAmount">Badge Number</span></dt>
+                  <dd class="alert view-details">
+                    <span *ngIf="!edit">{{ gym.badgeAmount }}</span>
+                    <input
+                      *ngIf="gym.badgeAmount && edit"
+                      class="form-control form-edit"
+                      name="badgeAmount"
+                      id="field_badgeAmount"
+                      data-cy="badgeAmount"
+                      formControlName="badgeAmount"
+                      value="{{ gym.badgeAmount }}"
+                    />
+                  </dd>
+                  <dt><span jhiTranslate="gimnasio-uiApp.gym.phoneNumber">Phone Number</span></dt>
+                  <dd class="alert view-details">
+                    <span *ngIf="!edit">{{ gym.phoneNumber }}</span>
+                    <input
+                      *ngIf="gym.phoneNumber && edit"
+                      class="form-control form-edit"
+                      name="phoneNumber"
+                      id="field_phoneNumber"
+                      data-cy="phoneNumber"
+                      formControlName="phoneNumber"
+                      value="{{ gym.phoneNumber }}"
+                    />
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer p-4">
+          <div class="align-box-row mt-3">
+            <div class="ml-auto">
+              <button
+                *ngIf="edit"
+                type="submit"
+                (click)="cancelEdit()"
+                class="btn btn-neutral-first mr-2"
+                data-cy="entityDetailsBackButton"
+              >
+                <span jhiTranslate="entity.action.cancel">Cancel</span>
+              </button>
+              <button type="button" (click)="editF()" *ngIf="!edit" class="btn btn-primary">
+                <span jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+              <button
+                type="submit"
+                *ngIf="edit"
+                id="save-entity"
+                data-cy="entityCreateSaveButton"
+                [disabled]="editForm.invalid || isSaving"
+                class="btn btn-primary"
+              >
+                <span jhiTranslate="entity.action.save">Save</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

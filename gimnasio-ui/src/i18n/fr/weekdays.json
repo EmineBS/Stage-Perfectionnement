@@ -1,0 +1,13 @@
+{
+  "gimnasio-uiApp": {
+    "WEEKDAYS": {
+      "SUNDAY": "Dimanche",
+      "MONDAY": "Lundi",
+      "TUESDAY": "Mardi",
+      "WEDNESDAY": "Mercredi",
+      "THURSDAY": "Jeudi",
+      "FRIDAY": "Vendredi",
+      "SATURDAY": "Samdi"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "gimnasio-uiApp": {
+    "gym": {
+      "home": {
+        "title": "Gyms",
+        "refreshListLabel": "Rafraîchir la liste",
+        "createLabel": "Créer une nouvelle gym",
+        "createOrEditLabel": "Créer ou modifier un gym",
+        "notFound": "Aucune gym trouvé"
+      },
+      "created": "Une nouvelle gym est créé avec identifiant {{ param }}",
+      "updated": "Une gym est mis à jour avec l'identifiant {{ param }}",
+      "deleted": "Une gym est supprimé avec identifiant {{ param }}",
+      "delete": {
+        "question": "Êtes-vous sûr de vouloir supprimer la gym {{ id }}?"
+      },
+      "detail": {
+        "title": "Gym"
+      },
+      "id": "ID",
+      "name": "Nom",
+      "registrationNumber": "Numéro d'immatriculation",
+      "location": "Localisation",
+      "email": "Email",
+      "badgeAmount": "Nombre des badges",
+      "phoneNumber": "Numéro de téléphone",
+      "description": "Description",
+      "status": "Status",
+      "lastModifiedDate": "Date de la dernière modification",
+      "lastModifiedBy": "Dernière modification par",
+      "createdDate": "Date de création",
+      "createdBy": "Créé par",
+      "user": "User"
+    }
+  }
+}

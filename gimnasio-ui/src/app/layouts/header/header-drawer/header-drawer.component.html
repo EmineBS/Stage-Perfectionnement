@@ -1,0 +1,37 @@
+<div class="app-drawer-content">
+  <button (click)="toggleHeaderDrawerOpen()" class="close-drawer-btn btn btn-sm" placement="left" tooltip="Close drawer" type="button">
+    <div [ngClass]="{ 'is-active': globals.toggleHeaderDrawer }" class="navbar-toggler hamburger hamburger--elastic">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </div>
+  </button>
+  <div class="p-4">
+    <div class="text-center">
+      <div class="font-weight-bold font-size-lg mb-0 text-black">Latest sales</div>
+      <p class="text-black-50">Latest reports available</p>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="bg-secondary rounded py-2 px-1">
+          <div class="display-3 text-center line-height-sm text-second text-center d-flex align-items-center pt-3 justify-content-center">
+            <fa-icon [icon]="['fas', 'dot-circle']" class="font-size-sm text-warning mr-2"></fa-icon>
+            <div>436</div>
+          </div>
+          <div class="text-black-50 text-center opacity-6 pt-3"><b>+65%</b> increase</div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="bg-secondary rounded py-2 px-1">
+          <div class="display-3 text-center line-height-sm text-second text-center d-flex align-items-center pt-3 justify-content-center">
+            <fa-icon [icon]="['fas', 'arrow-up']" class="font-size-sm text-success mr-2"></fa-icon>
+            <div>843</div>
+          </div>
+          <div class="text-black-50 text-center opacity-6 pt-3"><b>-22%</b> decrease</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div (click)="toggleHeaderDrawerOpen()" [ngClass]="{ 'is-active': globals.toggleHeaderDrawer }" class="app-drawer-overlay"></div>

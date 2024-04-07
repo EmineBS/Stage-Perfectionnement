@@ -1,0 +1,8 @@
+#notice the github repository path is /owner/repo
+github_repository_path: https://github.com/alphalabcomtn/gimnasio-ui
+runner_version: 2.304.0
+runner_token: A74WJMMAWL56FIUZ4PH5SXLETEAGW 
+runner_name: gimnasio-ui
+runner_labels: ci-cd
+runner_folder: /opt/runners/gimnasio-ui/cicd
+runner_user: alphalab

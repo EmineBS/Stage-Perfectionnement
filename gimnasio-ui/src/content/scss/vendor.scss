@@ -1,0 +1,28 @@
+/* after changing this file run 'npm run webapp:build' */
+
+/***************************
+put Sass variables here:
+eg $input-color: red;
+****************************/
+@import 'widgets/bootstrap/scss/functions';
+
+@import 'widgets/bootstrap/scss/variables';
+@import 'core/variables';
+
+@import 'widgets/bootstrap/scss/mixins';
+@import 'core/mixins';
+// Override Bootstrap variables
+
+// Utilities
+
+@import 'core/utilities/helpers';
+@import 'core/utilities/background';
+@import 'core/utilities/demo';
+
+// Bootstrap base
+
+@import 'widgets/bootstrap/base';
+/* jhipster-needle-scss-add-vendor JHipster will add new css style */
+@import 'bootstrap-variables';
+// Import Bootstrap source files from node_modules
+@import '~bootstrap/scss/bootstrap';

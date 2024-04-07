@@ -1,0 +1,101 @@
+<div class="d-flex">
+  <div class="col-12">
+    <div>
+      <form novalidate (ngSubmit)="confirm()" [formGroup]="editForm">
+        <div *ngIf="criteria">
+          <div class="col-12">
+            <div>
+              <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <jhi-alert></jhi-alert>
+
+                <dl class="row-md jh-entity-details">
+                  <dt *jhiHasAnyAuthority="'ROLE_ADMIN'"><span jhiTranslate="global.field.id">ID</span></dt>
+                  <dd *jhiHasAnyAuthority="'ROLE_ADMIN'" class="alert view-details">
+                    <span>{{ criteria.id }}</span>
+                  </dd>
+                  <dt><span jhiTranslate="gimnasio-uiApp.criteria.name">Name</span></dt>
+                  <dd class="alert view-details">
+                    <span *ngIf="!edit">{{ criteria.name }}</span>
+                    <input
+                      *ngIf="edit"
+                      type="text"
+                      class="form-control"
+                      name="name"
+                      id="field_name"
+                      data-cy="name"
+                      formControlName="name"
+                    />
+                  </dd>
+                  <dt><span jhiTranslate="gimnasio-uiApp.criteria.description">Description</span></dt>
+                  <dd class="alert view-details">
+                    <span *ngIf="!edit">{{ criteria.description }}</span>
+                    <input
+                      *ngIf="edit"
+                      type="text"
+                      class="form-control"
+                      name="description"
+                      id="field_description"
+                      data-cy="description"
+                      formControlName="description"
+                    />
+                  </dd>
+
+                  <dt><span jhiTranslate="gimnasio-uiApp.criteria.gym">Gym</span></dt>
+                  <dd class="alert view-details">
+                    <span>{{ criteria.gymName }}</span>
+                  </dd>
+                  <dt><span jhiTranslate="gimnasio-uiApp.criteria.lastModifiedDate">Last Modified Date</span></dt>
+                  <dd class="alert view-details">
+                    <span>{{ criteria.lastModifiedDate | date: 'medium' }}</span>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer p-4">
+          <div class="align-box-row mt-3">
+            <div class="ml-auto">
+              <span *jhiHasAnyAuthority="'ROLE_ADMIN'">
+                <button type="button" (click)="editF()" *ngIf="!edit" class="btn btn-primary">
+                  <span jhiTranslate="entity.action.edit">Edit</span>
+                </button>
+                <button
+                  type="submit"
+                  *ngIf="edit"
+                  id="save-entity"
+                  data-cy="entityCreateSaveButton"
+                  [disabled]="editForm.invalid || isSaving"
+                  class="btn btn-primary"
+                >
+                  <span jhiTranslate="entity.action.save">Save</span>
+                </button>
+                <button
+                  *ngIf="edit"
+                  type="submit"
+                  (click)="cancelEdit()"
+                  class="btn btn-neutral-first mr-2"
+                  data-cy="entityDetailsBackButton"
+                >
+                  <span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+              </span>
+              <button
+                *ngIf="!edit"
+                type="submit"
+                (click)="previousState()"
+                class="btn btn-neutral-first mr-2"
+                data-cy="entityDetailsBackButton"
+              >
+                <span jhiTranslate="entity.action.back">Back</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

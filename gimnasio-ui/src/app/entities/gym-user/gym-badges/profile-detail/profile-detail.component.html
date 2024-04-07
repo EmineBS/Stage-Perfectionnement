@@ -1,0 +1,54 @@
+<div class="col-12">
+  <div class="card-header pr-2">
+    <div class="col-12" *ngIf="!profile">
+      <div class="alert alert-warning" id="no-result">
+        <span jhiTranslate="gimnasio-uiApp.profile.home.notFound">No checkins found</span>
+      </div>
+      <jhi-alert></jhi-alert>
+    </div>
+    <div class="col-3"></div>
+  </div>
+
+  <div class="card-body p-0">
+    <div class="table-responsive" style="min-height: 40vh">
+      <div class="d-flex">
+        <div class="col-12">
+          <div *ngIf="profile">
+            <div class="col-12">
+              <div>
+                <jhi-alert-error></jhi-alert-error>
+                <jhi-alert></jhi-alert>
+                <dl class="row-md jh-entity-details">
+                  <!-- Email input -->
+                  <dt><span>Email</span></dt>
+                  <dd class="alert view-details">
+                    <span>{{ profile.email }}</span>
+                  </dd>
+      
+                  <!-- Last name  input -->
+                  <dt><span>last Name</span></dt>
+                  <dd class="alert view-details">
+                    <span>{{ profile.lastName }}</span>
+                  </dd>
+      
+                  <!-- Name input -->
+                  <dt><span>First Name</span></dt>
+                  <dd class="alert view-details">
+                    <span>{{ profile.name }}</span>
+                  </dd>
+      
+                  <!-- Phone number -->
+                  <dt><span>PhoneNumber</span></dt>
+                  <dd class="alert view-details">
+                    <span>{{ profile.phoneNumber }}</span>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+  </div>
+</div>

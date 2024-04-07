@@ -1,0 +1,216 @@
+<div *jhiHasAnyAuthority="['ROLE_USER']" class="app-content p-0">
+  <form [formGroup]="form">
+    <div class="mb-4 flex-grow-1 w-100 d-flex align-items-center">
+      <div class="bg-composed-wrapper--content text-center py-4">
+        <div class="col-xl-9 col-lg-9 col-md-10 col-sm-12 mx-auto text-center text-white">
+          <div class="row no-gutters">
+            <div class="col-sm-12 col-lg-9 mt-3 px-2">
+              <input
+                class="form-control form-control-lg"
+                formControlName="badge"
+                placeholder="Badge UID"
+                type="text"
+                ngbTooltip="Please enter a valid  Badge uid"
+              />
+            </div>
+            <div class="col-sm-12 col-lg-3 mt-3 px-2">
+              <button class="btn d-block shadow-none w-100 btn-primary btn-lg" (click)="open(content)" ngbTooltip="check-in via badge">
+                <span class="btn-wrapper--label" style="white-space: nowrap"> Check-in </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <!--Backdrop offcanvas-->
+
+  <ng-template #content let-offcanvas>
+    <div class="offcanvas-header p-4">
+      <button
+        (click)="offcanvas.dismiss('Cross click')"
+        class="close-drawer-btn btn-sm"
+        placement="left"
+        ngbTooltip="Close drawer"
+        type="button"
+      >
+        <div class="navbar-toggler hamburger hamburger--elastic is-active">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </div>
+      </button>
+      <div class="divider"></div>
+      <div class="divider mb-4"></div>
+    </div>
+    <div class="offcanvas-body p-4">
+      <!-- Body for the offcanvas(sidebar) start Here  -->
+
+      <div *ngIf="errrorMessage">
+        <ngb-alert #myAlert type="danger">{{ errrorMessage }} </ngb-alert>
+      </div>
+
+      <div class="row" *ngIf="badge">
+        <div class="mt-3 px-2 px-xl-5 text-left">
+          <table class="table table-responsive">
+            <tr class="mt-3 px-2 px-xl-5">
+              <td class="font-weight-bold mb-2">Status</td>
+              <td>{{ badge.status }}</td>
+            </tr>
+            <tr>
+              <td class="font-weight-bold">Badge ID</td>
+              <td>{{ badge.id }}</td>
+            </tr>
+            <tr>
+              <td class="font-weight-bold">Badge</td>
+              <td>{{ badge.badgeUid }}</td>
+            </tr>
+            <tr>
+              <td class="font-weight-bold">Pack Name</td>
+              <td>{{ badge.packName }}</td>
+            </tr>
+            <tr>
+              <td class="font-weight-bold">Total Sessions</td>
+              <td>{{ badge.packWorkoutSessions }}</td>
+            </tr>
+            <tr>
+              <td class="font-weight-bold">Remaining Sessions</td>
+              <td>{{ badge.checkinLeft }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <!-- List of checkins -->
+
+  <div class="px-1 py-2">
+    <div class="alert alert-warning" id="no-result" *ngIf="checkins?.length === 0 && !isLoading">
+      <span jhiTranslate="gimnasio-uiApp.checkin.home.notFound">No checkins found</span>
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+    </div>
+    <div class="card card-box p-2 mb-5 mt-4" *ngIf="checkins?.length !== 0">
+      <div class="table-responsive" style="min-height: 40vh">
+        <table class="table table-striped text-nowrap table-bordered table-hover mb-0" *ngIf="checkins && checkins.length > 0">
+          <thead class="thead-light">
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+              <th scope="col" jhiSortBy="id">
+                <div class="d-flex">
+                  <span jhiTranslate="gimnasio-uiApp.checkin.badgeId">Badge ID</span>
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                </div>
+              </th>
+              <th scope="col" jhiSortBy="user">
+                <div class="text-center">
+                  <span jhiTranslate="gimnasio-uiApp.checkin.user">User</span>
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                </div>
+              </th>
+              <th scope="col">
+                <div class="text-center">
+                  <span jhiTranslate="gimnasio-uiApp.checkin.pack">Pack</span>
+                </div>
+              </th>
+              <th scope="col" jhiSortBy="status">
+                <div class="text-center">
+                  <span jhiTranslate="gimnasio-uiApp.checkin.status">Status</span>
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                </div>
+              </th>
+              <th scope="col" jhiSortBy="createdDate">
+                <div class="text-center">
+                  <span jhiTranslate="gimnasio-uiApp.checkin.createdDate">created Date</span>
+                  <fa-icon class="p-1" icon="sort"></fa-icon>
+                </div>
+              </th>
+              <th class="text-center"><span jhiTranslate="entity.action.title"></span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let checkin of checkins; index as i; trackBy: trackId" data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/gyms', idgym, 'badges', checkin.badgeId, 'view']">{{ formatId(checkin.badgeId) }}</a>
+              </td>
+
+              <td class="text-center">{{ checkin.userId }}</td>
+
+              <td class="text-center">{{ checkin.packName }}</td>
+
+              <td class="text-center">
+                <span class="badge" [ngClass]="getBadgeClass(checkin.status!)"> {{ checkin.status }}</span>
+              </td>
+
+              <td class="text-center">
+                {{ checkin.createdDate | date: 'medium' }}
+              </td>
+
+              <td class="text-center">
+                <div class="btn-group btn-group-sm" dropdown placement="bottom right" container="body">
+                  <button class="btn btn-sm px-2 py-0 dropdown-toggle no-caret btn-neutral-first" dropdownToggle type="button">
+                    <fa-icon class="font-size-lg" [icon]="['fas', 'ellipsis']" ngbTooltip="Actions"></fa-icon>
+                  </button>
+                  <div *dropdownMenu class="dropdown-menu dropdown-menu-xl p-0 dropdown-menu-right">
+                    <ul class="nav nav-neutral-first nav-pills flex-column pt-2 pb-3">
+                      <li class="nav-item nav-item--header px-3">
+                        <span class="text-capitalize text-black font-size-md font-weight-bold">
+                          <span jhiTranslate="entity.action.title"></span>
+                        </span>
+                      </li>
+                      <li class="dropdown-divider"></li>
+                      <li class="nav-item px-3">
+                        <a [routerLink]="['/gyms', idgym, 'checkin', checkin.id, 'view']" class="nav-link active">
+                          <span jhiTranslate="entity.action.view"></span>
+                          <div class="ml-auto badge badge-first">New</div>
+                        </a>
+                      </li>
+                      <li class="dropdown-divider"></li>
+                      <li *ngIf="checkin.status !== 'CANCELED' && checkin.status !== 'REFUSED'" class="nav-item">
+                        <a (click)="cancelCheckin(checkin)" class="nav-link text-danger mx-3">
+                          <div class="nav-link-icon">
+                            <fa-icon [icon]="['fas', 'times']"></fa-icon>
+                          </div>
+                          <span jhiTranslate="entity.action.cancel"></span>
+                        </a>
+                      </li>
+                      <li *ngIf="checkin.status === 'PENDING'" class="nav-item">
+                        <a (click)="confirmCheckin(checkin)" class="nav-link text-success mx-3">
+                          <div class="nav-link-icon">
+                            <fa-icon [icon]="['fas', 'check']"></fa-icon>
+                          </div>
+                          <span jhiTranslate="entity.action.confirm"></span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="divider"></div>
+      <div *ngIf="checkins && checkins.length > 0">
+        <div class="d-flex justify-content-center">
+          <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <ngb-pagination
+            [collectionSize]="totalItems"
+            [page]="page"
+            [pageSize]="itemsPerPage"
+            [maxSize]="5"
+            [rotate]="true"
+            [boundaryLinks]="true"
+            (pageChange)="navigateToPage($event)"
+          ></ngb-pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<notifier-container></notifier-container>

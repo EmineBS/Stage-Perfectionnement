@@ -1,0 +1,72 @@
+<div class="app-wrapper bg-white">
+  <div class="app-main">
+    <div class="app-content p-0">
+      <div class="app-inner-content-layout--main">
+        <div class="flex-grow-1 w-100 d-flex align-items-center">
+          <div class="bg-composed-wrapper--content">
+            <div class="hero-wrapper bg-composed-wrapper bg-plum-plate bg-arielle-smile min-vh-100">
+              <div class="flex-grow-1 w-100 d-flex align-items-center">
+                <div class="bg-composed-wrapper--image" style="background-image: url('content/images/hero-1.jpg')"></div>
+                <div class="bg-composed-wrapper--bg bg-second opacity-5"></div>
+                <div class="bg-composed-wrapper--content text-center py-5">
+                  <div class="col-xl-7 col-lg-6 col-md-10 mx-auto text-center text-white">
+                    <h1 class="display-1 mb-3 px-4 font-weight-bold">GIMNASIO</h1>
+                    <h3 class="font-size-xl line-height-sm font-weight-light d-block px-2 mb-2 text-white-50">
+                      <span>Welcome to the modern gym management platform, designed to streamline fitness facility operations and elevate members' experience</span>
+                    </h3>
+                    <div class="row no-gutters">
+                      <div class="col-12 mt-3 px-2">
+                        <button
+                          id="btnLogin"
+                          class="btn btn-md btn-outline-secondary d-block d-sm-inline-block ml-0 mt-3 px-5 mt-sm-0 ml-sm-3"
+                          type="button"
+                          (click)="login()"
+                        >
+                          <span class="btn-wrapper"> Login </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="hero-footer pb-4">
+                <div>
+                  <ul class="nav nav-pills nav-neutral-secondary">
+                    <li class="nav-item">
+                      <a
+                        [routerLink]=""
+                        class="nav-link font-size-lg bg-brand-facebook btn btn-facebook m-2 d-inline-flex"
+                        ngbTooltip="Facebook"
+                      >
+                        <i-feather class="text-white" name="Facebook"></i-feather>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        [routerLink]=""
+                        class="nav-link font-size-lg bg-brand-twitter btn btn-twitter m-2 d-inline-flex"
+                        ngbTooltip="Twitter"
+                      >
+                        <i-feather class="text-white" name="Twitter"></i-feather>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        routerLink=""
+                        class="nav-link font-size-lg bg-brand-instagram btn btn-instagram m-2 d-inline-flex"
+                        ngbTooltip="Instagram"
+                      >
+                        <i-feather class="text-white" name="Instagram"></i-feather>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

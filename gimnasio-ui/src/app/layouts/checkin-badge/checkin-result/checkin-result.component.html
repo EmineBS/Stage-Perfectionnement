@@ -1,0 +1,37 @@
+<div class="app-wrapper bg-white">
+  <div class="app-main">
+    <div class="app-content p-0">
+      <div class="app-inner-content-layout--main">
+        <div class="flex-grow-1 w-100 d-flex align-items-center">
+          <div class="bg-composed-wrapper--content">
+            <div class="hero-wrapper bg-composed-wrapper bg-neutral-{{ color }} min-vh-100">
+              <div class="flex-grow-1 w-100 d-flex align-items-center">
+                <div class="container text-center py-5">
+                  <span class="badge badge-pill px-4 h-auto py-1">
+                    <div class="bg-{{ color }} text-center text-white font-size-xl d-50 rounded-circle mt-1">
+                      <fa-icon *ngIf="badge?.status === 'CONFIRMED'" [icon]="['fas', 'check']"></fa-icon>
+                      <fa-icon *ngIf="badge?.status !== 'CONFIRMED'" [icon]="['fas', 'exclamation']"></fa-icon>
+                    </div>
+                  </span>
+                  <div class="text-{{ color }} mt-3 px-2 px-xl-5">
+                    <h1 class="display-3 py-4 px-2 px-xl-5 mb-0 font-weight-bold">
+                      {{ message }}
+                    </h1>
+                    <p class="font-size-lg text-{{ color }}-50 pb-5 my-0 d-block px-2 px-xl-5">
+                      {{ reason }}
+                    </p>
+                    <div>
+                      <a class="btn m-2 btn-pill btn-{{ color }} btn-lg" (click)="cancel()">
+                        <span class="btn-wrapper text-white"> Close </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,109 @@
+<div customClass="px-1 py-2 ">
+  <div class="mt-2 py-2 row justify-content-center">
+    <div class="card card-box col-xl-6">
+      <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+        <div class="card-header">
+          <div class="card-header--title">
+            <h5 id="jhi-pack-heading" class="card-header--title font-weight-bold py-2" data-cy="packCreateUpdateHeading">
+              <span jhiTranslate="gimnasio-uiApp.pack.home.createLabel" *ngIf="editForm.controls.id.value === null">Add a pack</span>
+            </h5>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <jhi-alert-error></jhi-alert-error>
+
+          <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+
+          <div class="row mb-3">
+            <label class="form-label" jhiTranslate="gimnasio-uiApp.pack.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          </div>
+
+          <div class="row mb-3">
+            <label class="form-label" jhiTranslate="gimnasio-uiApp.pack.description" for="field_description">Description</label>
+            <input
+              type="text"
+              class="form-control"
+              name="description"
+              id="field_description"
+              data-cy="description"
+              formControlName="description"
+            />
+          </div>
+
+          <div class="row mb-3">
+            <label class="form-label" jhiTranslate="gimnasio-uiApp.pack.workoutSessions" for="field_workoutSessions"
+              >Workout Sessions</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              name="workoutSessions"
+              id="field_workoutSessions"
+              data-cy="workoutSessions"
+              formControlName="workoutSessions"
+            />
+          </div>
+          <div class="row mb-3">
+            <label class="form-label" jhiTranslate="gimnasio-uiApp.pack.price" for="field_price">Price</label>
+            <input type="float" step="any" class="form-control" name="price" id="field_price" data-cy="price" formControlName="price" />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="gimnasio-uiApp.pack.autoConfirm" for="field_autoConfirm">Auto check this pack</label>
+            <input
+              type="checkbox"
+              class="form-check-input ml-2"
+              name="autoConfirm"
+              id="field_autoConfirm"
+              data-cy="autoConfirm"
+              formControlName="autoConfirm"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="field_rdvEnabled">Appointment Needed</label>
+            <input
+              type="checkbox"
+              class="form-check-input ml-2"
+              name="rdvEnabled"
+              id="field_rdvEnabled"
+              data-cy="rdvEnabled"
+              formControlName="rdvEnabled"
+            />
+          </div>
+        </div>
+
+        <div class="card-footer bg-light p-4 row">
+          <div class="align-box-row mt-3">
+            <div class="ml-auto">
+              <button
+                type="button"
+                id="cancel-save"
+                data-cy="entityCreateCancelButton"
+                class="btn btn-neutral-first"
+                (click)="previousState()"
+              >
+                <span jhiTranslate="entity.action.cancel">Cancel</span>
+              </button>
+
+              <button
+                type="submit"
+                id="save-entity"
+                data-cy="entityCreateSaveButton"
+                [disabled]="editForm.invalid || isSaving"
+                class="btn btn-primary"
+              >
+                <span jhiTranslate="entity.action.save">Save</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="d-flex">
+  <div class="col-12">
+    <div>
+      <div *ngIf="checkin">
+        <div class="col-12">
+          <div>
+            <div>
+              <jhi-alert-error></jhi-alert-error>
+
+              <jhi-alert></jhi-alert>
+
+              <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gimnasio-uiApp.checkin.id">id</span></dt>
+                <dd class="alert view-details">
+                  <span>{{ formatId(checkin.id) }}</span>
+                </dd>
+                <dt><span jhiTranslate="gimnasio-uiApp.checkin.badge">Badge</span></dt>
+                <dd class="alert view-details">
+                  <span>{{ checkin.badgeUid }}</span>
+                </dd>
+
+                <dt><span jhiTranslate="gimnasio-uiApp.checkin.createdDate">created Date</span></dt>
+                <dd class="alert view-details">
+                  <span> {{ checkin.createdDate | date: 'long' }}</span>
+                </dd>
+                <dt><span jhiTranslate="gimnasio-uiApp.checkin.user">Checkin made by</span></dt>
+                <dd class="alert view-details">
+                  <span> {{ checkin.userId }}</span>
+                </dd>
+                <dt><span jhiTranslate="gimnasio-uiApp.checkin.status">Status</span></dt>
+                <dd class="alert view-details">
+                  <span class="badge" [ngClass]="getBadgeClass(checkin.status!)"> {{ checkin.status }}</span>
+                </dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer p-4">
+        <div class="align-box-row mt-3">
+          <div class="ml-auto">
+            <button type="submit" (click)="previousState()" class="btn btn-neutral-first mr-2" data-cy="entityDetailsBackButton">
+              <span jhiTranslate="entity.action.back">Back</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

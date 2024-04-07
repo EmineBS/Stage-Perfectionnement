@@ -1,0 +1,31 @@
+<div class="d-flex">
+    <div class="col-12">
+        <div>
+            <dl class="row-md jh-entity-details" [ngSwitch]="isEditable">
+                <dt><span>Name</span></dt>
+                <dd class="alert view-details">
+                    <span *ngSwitchCase="false">{{ Me.myName }}</span>
+                    <input type="text" *ngSwitchCase="true" [(ngModel)]="Me.myName" class="form-control form-edit"/>
+                </dd>
+                <dt><span>FamilyName</span></dt>
+                <dd class="alert view-details">
+                    <span *ngSwitchCase="false">{{ Me.familyName }}</span>
+                    <input type="text" *ngSwitchCase="true" [(ngModel)]="Me.familyName" class="form-control form-edit"/>
+                </dd>
+                <dt><span>Age</span></dt>
+                <dd class="alert view-details">
+                    <span *ngSwitchCase="false">{{ Me.age }}</span>
+                    <input type="text" *ngSwitchCase="true" [(ngModel)]="Me.age" class="form-control form-edit"/>
+                </dd>
+                <div class="card-footer p-3">
+                    <div class="align-box-row mt-2">
+                        <button type="button" (click)="edit()" class="btn btn-primary">
+                            <span>Edit</span>
+                        </button>
+                    </div>
+                </div>
+            </dl>
+        </div>
+    </div>
+</div>
+        

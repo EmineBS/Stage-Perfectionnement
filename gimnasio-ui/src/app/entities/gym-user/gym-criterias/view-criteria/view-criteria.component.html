@@ -1,0 +1,47 @@
+<div class="d-flex">
+  <div class="col-12">
+    <div>
+      <div *ngIf="criteria">
+        <div class="col-12">
+          <div>
+            <div>
+              <jhi-alert-error></jhi-alert-error>
+
+              <jhi-alert></jhi-alert>
+
+              <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gimnasio-uiApp.criteria.name">Name</span></dt>
+                <dd class="alert view-details">
+                  <span>{{ criteria.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="gimnasio-uiApp.criteria.description">Description</span></dt>
+                <dd class="alert view-details">
+                  <span>{{ criteria.description }}</span>
+                </dd>
+
+                <dt><span jhiTranslate="gimnasio-uiApp.criteria.gym">Gym</span></dt>
+                <dd class="alert view-details">
+                  <span>{{ criteria.gym?.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="gimnasio-uiApp.criteria.lastModifiedDate">Last Modified Date</span></dt>
+                <dd class="alert view-details">
+                  <span>{{ criteria.lastModifiedDate }}</span>
+                </dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer p-4">
+        <div class="align-box-row mt-3">
+          <div class="ml-auto">
+            <button type="submit" (click)="previousState()" class="btn btn-neutral-first mr-2" data-cy="entityDetailsBackButton">
+              <span jhiTranslate="entity.action.back">Back</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

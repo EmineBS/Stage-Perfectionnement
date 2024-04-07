@@ -1,0 +1,25 @@
+{
+  "gimnasio-uiApp": {
+    "progress": {
+      "home": {
+        "title": "Progrès",
+        "refreshListLabel": "Rafraîchir la liste",
+        "createLabel": "Créer un nouveau progrès",
+        "createOrEditLabel": "Créer ou modifier un progrès",
+        "notFound": "Pas de progrès"
+      },
+      "created": "Un nouveau progrès est créé avec identifiant {{ param }}",
+      "updated": "Un progrés est mis à jour avec l'identifiant {{ param }}",
+      "deleted": "Un progrés est supprimé avec identifiant {{ param }}",
+      "delete": {
+        "question": "Êtes-vous sûr de vouloir supprimer le progrès {{ id }}?"
+      },
+      "detail": {
+        "title": "Progrès"
+      },
+      "id": "ID",
+      "gymId": "Gym Id",
+      "gym": "Gym"
+    }
+  }
+}

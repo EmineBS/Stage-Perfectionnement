@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+    <property name="floatType" value="float4" dbms="postgresql"/>
+    <property name="clobType" value="longvarchar" dbms="postgresql"/>
+    <property name="blobType" value="bytea" dbms="postgresql"/>
+    <property name="uuidType" value="uuid" dbms="postgresql"/>
+    <property name="datetimeType" value="datetime" dbms="postgresql"/>
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230602164050_added_entity_Gym.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230605143450_added_entity_Pack.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230605151050_added_entity_Badge.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230607105059_added_entity_Rel_Badge_Pack.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230608105930_added_entity_Checkin.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230612103040_alter_entity_gym.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230612104050_added_entity_Rel_User_Gym.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230613093840_added_entity_Profile.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230614102030_added_column_badge.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230615105625_added_entity_Feature.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230615112030_added_entity_Rel_Gym_Feature.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230616095125_added_entity_Calendar.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230616100050_added_entity_RDV.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230616123545_alter_entity_Pack.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230619175030_alter_entity_Badge_Profile.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230621094225_alter_entity_Gym.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230621105830_alter_entity_Badge.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230621112040_added_entity_Ext_Badge_Designation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230621174530_load_data_authority.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230703102530_load_data_authority.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230703103535_added_entity_Criteria.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230703105040_added_entity_Progress.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230705123045_alter_entity_Progress.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20230705123644_added_entity_Rel_Criteria_Progress.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240118163360_added_entity_Amine.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240126100530_added_entity_Game.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240126161730_added_entity_Tournament.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240129172530_added_entity_Rel_User_Tournament.xml" relativeToChangelogFile="false"/>
+
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
+</databaseChangeLog>

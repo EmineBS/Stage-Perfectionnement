@@ -1,0 +1,49 @@
+<div class="d-flex">
+  <div class="col-12">
+    <div>
+      <div *ngIf="badge">
+        <div class="col-12">
+          <div>
+            <div>
+              <jhi-alert-error></jhi-alert-error>
+
+              <jhi-alert></jhi-alert>
+
+              <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gimnasio-uiApp.badge.id">id</span></dt>
+                <dd class="alert view-details">
+                  <span>{{ formatId(badge.id) }}</span>
+                </dd>
+                <dt><span jhiTranslate="gimnasio-uiApp.badge.uid">uid</span></dt>
+                <dd class="alert view-details">
+                  <span>{{ badge.uid }}</span>
+                </dd>
+                <dt><span jhiTranslate="gimnasio-uiApp.badge.gym">Gym</span></dt>
+                <dd class="alert view-details">
+                  <span>{{ badge.gymName }}</span>
+                </dd>
+
+                <dt><span jhiTranslate="gimnasio-uiApp.badge.lastModifiedDate">last Modified Date</span></dt>
+                <dd class="alert view-details">
+                  <span> {{ badge.lastModifiedDate | date: 'long' }}</span>
+                </dd>
+                <dt><span jhiTranslate="gimnasio-uiApp.badge.status">Status</span></dt>
+                <dd class="alert view-details">
+                  <span class="badge" [ngClass]="getBadgeClass(badge.status!)" jhiTranslate="{{ 'gimnasio-uiApp.STATUS.' + badge.status }}">
+                    {{ badge.status }}</span
+                  >
+                </dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer p-4">
+        <div class="align-box-row mt-3">
+          <div class="ml-auto"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

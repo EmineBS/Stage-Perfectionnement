@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Blockchain.
+    -->
+    <changeSet id="20240126161730-1" author="jhipster">
+        <createTable tableName="tournament">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false" uniqueConstraintName="UID_FIELD_VALUE_UNIQUE"/>
+            </column>
+
+            <column name="registration" type="boolean">
+                <constraints nullable="false" uniqueConstraintName="UID_FIELD_VALUE_UNIQUE"/>
+            </column>
+
+            <column name="starttimestamp" type="bigint">
+                <constraints nullable="false" uniqueConstraintName="UID_FIELD_VALUE_UNIQUE"/>
+            </column>
+
+            <column name="minplayers" type="int">
+                <constraints nullable="false" uniqueConstraintName="UID_FIELD_VALUE_UNIQUE"/>
+            </column>
+
+            <column name="maxplayers" type="int">
+                <constraints nullable="false" uniqueConstraintName="UID_FIELD_VALUE_UNIQUE"/>
+            </column>
+
+            <column name="gameid" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="created_by" type="varchar(50)" defaultValue="SYSTEM">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="true"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)" defaultValue="SYSTEM">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_modified_date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="true"/>
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20240126161730-1-relations-game" author="jhipster">
+        <addForeignKeyConstraint baseColumnNames="gameid"
+                                 baseTableName="tournament"
+                                 constraintName="fk_tournament__game_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="game"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,86 @@
+<form [formGroup]="confirmForm" (ngSubmit)="submitForm()">
+  <div class="modal-header">
+    <h4 class="modal-title">Verification</h4>
+
+    <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()">&times;</button>
+  </div>
+
+  <div class="modal-body">
+    <p id="jhi-delete-badge-heading">Please provide your credentials to verify your identity.</p>
+
+    <div class="form-group mb-3">
+      <label for="mail">Email <span class="text-danger">*</span></label>
+      <div class="input-group input-group-alternative">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <fa-icon [icon]="['fas', 'envelope']"></fa-icon>
+          </span>
+        </div>
+        <input type="email" placeholder="Email" name="email" class="form-control" id="email" formControlName="email" />
+      </div>
+
+      <div
+        *ngIf="confirmForm.get('email')?.invalid && (confirmForm.get('email')?.dirty || confirmForm.get('email')?.touched)"
+        class="error text-danger"
+      >
+        <div *ngIf="confirmForm.get('email')?.errors?.required">Email is required.</div>
+        <div *ngIf="confirmForm.get('email')?.errors?.email">Invalid email format.</div>
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="mail">PIN code: <span class="text-danger">*</span></label>
+      <div class="input-group input-group-alternative">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <fa-icon [icon]="['fas', 'fingerprint']"></fa-icon>
+          </span>
+        </div>
+        <input type="password" id="pin" name="pin" formControlName="pin" class="form-control" required maxlength="6" />
+      </div>
+
+      <div
+        *ngIf="confirmForm.get('pin')?.invalid && (confirmForm.get('pin')?.dirty || confirmForm.get('pin')?.touched)"
+        class="error text-danger"
+      >
+        <div *ngIf="confirmForm.get('pin')?.errors?.required">Pin is required.</div>
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="mail">Confirm PIN code: <span class="text-danger">*</span></label>
+      <div class="input-group input-group-alternative">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <fa-icon [icon]="['fas', 'fingerprint']"></fa-icon>
+          </span>
+        </div>
+        <input type="password" id="confirmPin" name="confirmPin" formControlName="confirmPin" class="form-control" required minlength="6" />
+      </div>
+
+      <div
+        *ngIf="confirmForm.get('pin')?.invalid && (confirmForm.get('pin')?.dirty || confirmForm.get('pin')?.touched)"
+        class="error text-danger"
+      >
+        <div *ngIf="confirmForm.get('pin')?.errors?.required">Pin is required.</div>
+      </div>
+    </div>
+    <div *ngIf="confirmForm.hasError('mismatchedPins')" class="error-message text-danger">PIN codes do not match.</div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="cancel()">
+      <span jhiTranslate="entity.action.cancel">Cancel</span>
+    </button>
+
+    <button
+      id="jhi-confirm-delete-badge"
+      data-cy="entityConfirmDeleteButton"
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="confirmForm.invalid || confirmForm.hasError('mismatchedPins')"
+    >
+      <span jhiTranslate="entity.action.confirm">Confirm</span>
+    </button>
+  </div>
+</form>

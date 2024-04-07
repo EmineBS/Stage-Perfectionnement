@@ -1,0 +1,41 @@
+<div class="d-flex">
+    <div class="col-12">
+      <div>
+        <form novalidate>
+          <div>
+            <div class="col-12">
+                <dl class="row-md jh-entity-details">
+                    <dt><span>ID</span></dt>
+                    <dd class="alert view-details">
+                        <span>{{ User.id }}</span>
+                    </dd>
+                    <dt><span>Name</span></dt>
+                    <dd class="alert view-details">
+                        <span>{{ User.myName }}</span>
+                    </dd>
+                    <dt><span>FamilyName</span></dt>
+                    <dd class="alert view-details">
+                        <span>{{ User.familyName }}</span>
+                    </dd>
+                    <dt><span>Age</span></dt>
+                    <dd class="alert view-details">
+                        <span>{{ User.age }}</span>
+                    </dd>
+                    <div class="card-footer p-4">
+                        <div class="align-box-row mt-3">
+                          <div class="ml-auto">
+                            <span>
+                              <button (click)="Back()" type="button" class="btn btn-primary">
+                                <span jhiTranslate="entity.action.back">Back</span>
+                              </button>
+                            </span>
+                          </div>
+                        </div>
+                    </div>
+                </dl>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>

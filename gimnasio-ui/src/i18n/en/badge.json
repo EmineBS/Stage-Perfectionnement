@@ -1,0 +1,38 @@
+{
+  "gimnasio-uiApp": {
+    "badge": {
+      "home": {
+        "title": "Badges",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Badge",
+        "createOrEditLabel": "Create or edit a Badge",
+        "notFound": "No Badges found"
+      },
+      "created": "A new Badge is created with identifier {{ param }}",
+      "updated": "A Badge is updated with identifier {{ param }}",
+      "deleted": "A Badge is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Badge {{ id }}?"
+      },
+      "detail": {
+        "title": "Badge"
+      },
+      "id": "ID",
+      "uid": "UID",
+      "status": "Status",
+      "pack": "Pack",
+      "lastModifiedDate": "Last Modified Date",
+      "lastModifiedBy": "Last Modified By",
+      "createdDate": "Created Date",
+      "createdBy": "Created By",
+      "gym": "Gym",
+      "badge_account": "Badge Account",
+      "remaining_sessions": "Remaining Sessions",
+      "noPackActive": "No Activated Pack",
+      "assignPack": "Assign pack first",
+      "addDesignation": "Add designation",
+      "addPack": "Add pack",
+      "addProgress": "Add Progress"
+    }
+  }
+}

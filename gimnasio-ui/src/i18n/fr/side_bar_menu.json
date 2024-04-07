@@ -1,0 +1,18 @@
+{
+  "gimnasio-uiApp": {
+    "sideBar": {
+      "title": "Le Menu De Navigation",
+      "items":{
+        "calendar":"Calendrier",
+        "checkin":"Check-in",
+        "packs":"Packs",
+        "criterias":"Critères",
+        "badges":"Badges",
+        "progress":"Progrès",
+        "feature" :"Fonctionnalités",
+        "calendarConfig": "Configuration",
+        "planning": "Planification"
+      }
+    }
+  }
+}
